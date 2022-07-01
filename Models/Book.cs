@@ -9,11 +9,11 @@ namespace FEBook.Models
     {
         public Book()
         {
-            BookAuthors = new HashSet<BookAuthor>();
-            BookDowndoads = new HashSet<BookDowndoad>();
-            BookRatings = new HashSet<BookRating>();
-            ManageBooks = new HashSet<ManageBook>();
-            ReadingHistories = new HashSet<ReadingHistory>();
+            BookAuthors = new List<BookAuthor>();
+            BookDowndoads = new List<BookDowndoad>();
+            BookRatings = new List<BookRating>();
+            ManageBooks = new List<ManageBook>();
+            ReadingHistories = new List<ReadingHistory>();
         }
 
         public int BookId { get; set; }

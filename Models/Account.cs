@@ -9,10 +9,10 @@ namespace FEBook.Models
     {
         public Account()
         {
-            BookDowndoads = new HashSet<BookDowndoad>();
-            BookRatings = new HashSet<BookRating>();
-            ManageBooks = new HashSet<ManageBook>();
-            ReadingHistories = new HashSet<ReadingHistory>();
+            BookDowndoads = new List<BookDowndoad>();
+            BookRatings = new List<BookRating>();
+            ManageBooks = new List<ManageBook>();
+            ReadingHistories = new List<ReadingHistory>();
         }
 
         public int UserId { get; set; }
