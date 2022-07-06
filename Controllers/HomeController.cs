@@ -14,11 +14,8 @@ namespace FEBook.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        // public HomeController(ILogger<HomeController> logger)
-        // {
-        //     _logger = logger;
-        // }
+        IBookRepository bookRepository = null;
+        public HomeController() => bookRepository = new BookRepository();
 
         public IActionResult Privacy()
         {
@@ -26,21 +23,21 @@ namespace FEBook.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+        public IActionResult Error(){
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        IBookRepository bookRepository = null;
-        public HomeController() => bookRepository = new BookRepository();
-        public async Task<ActionResult> Index(string searchString) {
+        
+        public async Task<ActionResult> Index(string searchString)
+        {
             var BookList = bookRepository.GetBooks();
             var searchBook = from book in BookList select book;
-            if(!String.IsNullOrEmpty(searchString)){
-                 searchBook = searchBook.Where(c => c.BookName!.Contains(searchString));   
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                searchBook = searchBook.Where(c => c.BookName!.Contains(searchString));
 
             }
             return View(await Task.FromResult(searchBook.ToList()));
 
+        }
     }
-  }
 }

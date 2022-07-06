@@ -1,13 +1,10 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 @model IEnumerable<Book>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Home Page";
 }
-
-
 
 <head>
 	<title>Ebook Categories</title>
@@ -67,6 +64,7 @@
 								<ul class="navbar_menu">
 									<li><a class="home" href="index.html">HOME</a></li>
 								</ul>
+								<!-- select * from Major -->
 								<div class="dropdown">
 									<button class="dropbtn">Major</button>
 									<div class="dropdown-content">
@@ -75,6 +73,7 @@
 										<a href="#">Business Administration</a>
 									</div>
 								</div>
+								<!-- check session -->
 								<form asp-controller="Books" asp-action="Index">
 								<div class="search-bar grid-container">									
 									<input type="search" class="form-control rounded" name="SearchString" placeholder="Search"
@@ -82,7 +81,7 @@
 									<button type="submit" value="Filter" class="btn">Search</button>
 								</div>
 								</form>
-								
+								<!-- check admin or user -->
 								<ul class="navbar_user">
 									<div class="dropdown">
 										<img src="images/menu.png" alt="">
