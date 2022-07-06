@@ -1,0 +1,24 @@
+@model Subject
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <h1>Subject Details</h1>
+    <h4>@ViewBag.Message</h4>
+    <hr>
+    <div class="row">
+        <b class="col-6">SubjectId</b>
+        <div class="col-6">@Model.SubjectId</div>
+    </div>
+    <div class="row">
+        <b class="col-6">SubjectName</b>
+        <div class="col-6">@Model.Subname</div>
+    </div>
+    <br> 
+    <div>
+        @Html.ActionLink("Edit", "Edit", new {id = Model.SubjectId}) |
+        @Html.ActionLink("Back to list", "Index") |
+        @Html.ActionLink("Delete", "Delete", new {id = Model.SubjectId})
+    </div>
+</div>
