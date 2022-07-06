@@ -14,10 +14,10 @@ namespace EbookProject.Controllers
     public class BooksController : Controller{
         IBookRepository BookRepository = null;
         public BooksController() => BookRepository = new BookRepository();
-        public async Task<ActionResult> bookList(string searchString)
+        public async Task<ActionResult> List(string searchString)
         {
-            var BookList = BookRepository.GetBooks();
-            var searchBook = from book in BookList select book;
+            var List = BookRepository.GetBooks();
+            var searchBook = from book in List select book;
             if (!String.IsNullOrEmpty(searchString))
             {
                 searchBook = searchBook.Where(c => c.BookName!.Contains(searchString));
@@ -47,7 +47,7 @@ namespace EbookProject.Controllers
                 if (ModelState.IsValid){
                     BookRepository.InsertBook(Book);
                 }
-                return RedirectToAction(nameof(bookList));
+                return RedirectToAction(nameof(List));
             } catch (Exception ex){
                 ViewBag.Message = ex.Message;
                 return View(Book);
@@ -74,7 +74,7 @@ namespace EbookProject.Controllers
                 if (ModelState.IsValid){
                     BookRepository.UpdateBook(Book);
                 }
-                return RedirectToAction(nameof(bookList));
+                return RedirectToAction(nameof(List));
             }
             catch (Exception ex){
                 ViewBag.Message = ex.Message;
@@ -98,7 +98,7 @@ namespace EbookProject.Controllers
         public ActionResult Delete(int id){
             try{
                 BookRepository.DeleteBook(id);
-                return RedirectToAction(nameof(bookList));
+                return RedirectToAction(nameof(List));
             }
             catch (Exception ex){
                 ViewBag.Message = ex.Message;
