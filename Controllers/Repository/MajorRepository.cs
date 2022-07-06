@@ -17,6 +17,14 @@ namespace FEBook.Controllers.Repository
             return MajorDAO.Instance.GetMajorByID(MajorId);
         }
 
+        public void CreateMajor(Major major) {
+            MajorDAO.Instance.Create(major);
+        }
+
+        public void EditMajor(Major major) {
+            MajorDAO.Instance.Edit(major);
+        }
+
     }
 
 }

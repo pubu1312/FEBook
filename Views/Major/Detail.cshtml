@@ -1,0 +1,23 @@
+@model Major
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="container">
+    <h1>Major Details</h1>
+    <h4>@ViewBag.Message</h4>
+    <hr>
+    <div class="row">
+        <b class="col-6">MajorId</b>
+        <div class="col-6">@Model.MajorId</div>
+    </div>
+    <div class="row">
+        <b class="col-6">MajorName</b>
+        <div class="col-6">@Model.MajorName</div>
+    </div>
+    <br> 
+    <div>
+        @Html.ActionLink("Edit", "Edit", new {id = Model.MajorId}) |
+        @Html.ActionLink("Back to list", "Index") |
+        @Html.ActionLink("Delete", "Delete", new {id = Model.MajorId})
+    </div>
+</div>

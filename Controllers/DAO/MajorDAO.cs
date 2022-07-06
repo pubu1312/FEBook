@@ -43,5 +43,36 @@ namespace FEBook.Controllers.DAO
             }
             return major;
         }
+
+        public void Create(Major major) {
+            try {
+                Major _Major = GetMajorByID(major.MajorId);
+                //ID not collapse
+                if (_Major == null) {
+                    using var context = new EbookManagementContext();
+                    context.Majors.Add(major); 
+                    context.SaveChanges();
+                } else {
+                    throw new Exception("The Major is already exist.");
+                }
+            } catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Edit(Major major) {
+            try {
+                Major _Major = GetMajorByID(major.MajorId);
+                if (_Major != null) {
+                    using var context = new EbookManagementContext();
+                    context.Majors.Update(major);
+                    context.SaveChanges();
+                } else {
+                    throw new Exception("The Major does not not exist.");
+                }
+            } catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

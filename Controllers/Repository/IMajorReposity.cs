@@ -11,5 +11,8 @@ namespace FEBook.Controllers.Repository
         IEnumerable<Major> GetMajors();
 
         Major GetMajorByID(int MajorId);
+
+        void CreateMajor(Major major);
+        void EditMajor(Major major);
     }
 }
