@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEBook.Controllers.Repository;
+using FEBook.DataAccess.Repository;
 using FEBook.Models;
 using Microsoft.AspNetCore.Mvc;
 

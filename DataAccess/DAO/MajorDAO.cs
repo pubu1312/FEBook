@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
 
-namespace FEBook.Controllers.DAO
+namespace FEBook.DataAccess.DAO
 {
     public class MajorDAO
     {

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEBook.Controllers.DAO;
+using FEBook.DataAccess.DAO;
 using FEBook.Models;
 
-namespace FEBook.Controllers.Repository
+namespace FEBook.DataAccess.Repository
 {
     public class MajorRepository : IMajorReposity
     {

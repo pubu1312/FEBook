@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
 
-namespace EbookProject.DataAccess.Repository
+namespace FEBook.DataAccess.Repository
 {
     public interface IBookRepository
     {

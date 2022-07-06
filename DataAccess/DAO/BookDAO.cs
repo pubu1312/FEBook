@@ -3,87 +3,87 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
-namespace EbookProject.DataAccess
+namespace FEBook.DataAccess.DAO
 {
-    public class AccountDAO
+    public class BookDAO
     {
-     private static AccountDAO instance = null;
+    private static BookDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static AccountDAO Instance { 
+        public static BookDAO Instance { 
             get{
                 lock (instanceLock){
                     if (instance == null){
-                        instance = new AccountDAO();
+                        instance = new BookDAO();
                     }
                     return instance;
                 }
             }
          }
     
-    public IEnumerable<Account> GetAccountList(){
-        var Accounts = new List<Account>();
+    public IEnumerable<Book> GetBookList(){
+        var Books = new List<Book>();
         try{
             using var context = new EbookManagementContext();
-            Accounts = context.Accounts.ToList();
+            Books = context.Books.ToList();
         }
         catch(Exception ex){
             throw new Exception(ex.Message);
         }
-        return Accounts;
+        return Books;
     }
-    public Account GetAccountByID(int AccountID){ 
-        Account Account = null;
+    public Book GetBookByID(int BookID){ 
+        Book Book = null;
         try{
             using var context = new EbookManagementContext();
-            Account = context.Accounts.SingleOrDefault(c => c.UserId == AccountID);
+            Book = context.Books.SingleOrDefault(c => c.BookId == BookID);
         }
         catch(Exception ex){
             throw new Exception(ex.Message);
         }
-            return Account;
+            return Book;
      }
-     public void AddNew(Account Account){  
+     public void AddNew(Book Book){  
         try{
-            Account _Account = GetAccountByID(Account.UserId);
-            if(_Account == null){
+            Book _Book = GetBookByID(Book.BookId);
+            if(_Book == null){
                 using var context = new EbookManagementContext();
-                context.Accounts.Add(Account);
+                context.Books.Add(Book);
                 context.SaveChanges();
             }
             else {
-                throw new Exception ("The Account is already exist.");
-            }
-        }
-        catch(Exception ex){
-            throw new Exception(ex.Message);
-        }
-     }
-     public void Update(Account Account){
-        try{
-             Account _Account = GetAccountByID(Account.UserId);
-            if(_Account != null){
-                using var context = new EbookManagementContext();
-                context.Accounts.Update(Account);
-                context.SaveChanges();
-            }
-            else {
-                throw new Exception ("The Account does not already exist.");
+                throw new Exception ("The Book is already exist.");
             }
         }
         catch(Exception ex){
             throw new Exception(ex.Message);
         }
      }
-     public void Remove(int AccountID){
+     public void Update(Book Book){
         try{
-           Account Account = GetAccountByID(AccountID);
-            if(Account != null){
+             Book _Book = GetBookByID(Book.BookId);
+            if(_Book != null){
                 using var context = new EbookManagementContext();
-                context.Accounts.Remove(Account);
+                context.Books.Update(Book);
                 context.SaveChanges();
             }
             else {
-                throw new Exception ("The Account does not already exist.");
+                throw new Exception ("The Book does not already exist.");
+            }
+        }
+        catch(Exception ex){
+            throw new Exception(ex.Message);
+        }
+     }
+     public void Remove(int BookID){
+        try{
+           Book Book = GetBookByID(BookID);
+            if(Book != null){
+                using var context = new EbookManagementContext();
+                context.Books.Remove(Book);
+                context.SaveChanges();
+            }
+            else {
+                throw new Exception ("The Book does not already exist.");
             }
         }
         catch (Exception ex){

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using EbookProject.DataAccess.Repository;
 using FEBook.Models;
+using FEBook.DataAccess.Repository;
 
 namespace EbookProject.Controllers
 {
