@@ -14,7 +14,7 @@ namespace EbookProject.Controllers
     public class BooksController : Controller{
         IBookRepository BookRepository = null;
         public BooksController() => BookRepository = new BookRepository();
-        public async Task<ActionResult> Index(string searchString)
+        public async Task<ActionResult> bookList(string searchString)
         {
             var BookList = BookRepository.GetBooks();
             var searchBook = from book in BookList select book;
@@ -27,97 +27,80 @@ namespace EbookProject.Controllers
 
         }
         
-        public ActionResult Detail(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Detail(int? id){
+            if (id == null){
                 return NotFound();
             }
             var Book = BookRepository.GetBookByID(id.Value);
-            if (Book == null)
-            {
+            if (Book == null){
                 return NotFound();
             }
             return View(Book);
         }
+
         public ActionResult Create() => View();
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book Book)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
+        public ActionResult Create(Book Book){
+            try{
+                if (ModelState.IsValid){
                     BookRepository.InsertBook(Book);
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
+                return RedirectToAction(nameof(bookList));
+            } catch (Exception ex){
                 ViewBag.Message = ex.Message;
                 return View(Book);
             }
         }
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(int? id) {
+            if (id == null){
                 return NotFound();
             }
             var Book = BookRepository.GetBookByID(id.Value);
-            if (Book == null)
-            {
+            if (Book == null){
                 return NotFound();
             }
             return View(Book);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Book Book)
-        {
-            try
-            {
-                if (id != Book.BookId)
-                {
+        public ActionResult Edit(int id, Book Book){
+            try{
+                if (id != Book.BookId){
                     return NotFound();
                 }
-                if (ModelState.IsValid)
-                {
+                if (ModelState.IsValid){
                     BookRepository.UpdateBook(Book);
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(bookList));
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 ViewBag.Message = ex.Message;
                 return View();
             }
         }
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(int? id){
+            if (id == null){
                 return NotFound();
             }
             var Book = BookRepository.GetBookByID(id.Value);
-            if (Book == null)
-            {
+            if (Book == null){
                 return NotFound();
             }
             return View(Book);
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            try
-            {
+        public ActionResult Delete(int id){
+            try{
                 BookRepository.DeleteBook(id);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(bookList));
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 ViewBag.Message = ex.Message;
                 return View();
             }
