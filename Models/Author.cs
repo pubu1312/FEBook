@@ -9,7 +9,7 @@ namespace FEBook.Models
     {
         public Author()
         {
-            BookAuthors = new HashSet<BookAuthor>();
+            BookAuthors = new List<BookAuthor>();
         }
 
         public int AuthorId { get; set; }
