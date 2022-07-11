@@ -1,9 +1,10 @@
-@model IEnumerable<Major>
+@model dynamic
 @{
     ViewData["Title"] = "Major Index";
 } 
 
 <div class="container">
+    <h1>Hello @Model.userEmail </h1>
     <h2>
         <a asp-controller="Major" asp-action="Create">Create new Major</a>
     </h2>
@@ -16,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var major in Model)
+            @foreach (var major in Model.majorList)
             {
                 <tr>
                     <td>@major.MajorId</td>

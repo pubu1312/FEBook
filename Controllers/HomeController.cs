@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using FEBook.DataAccess.DAO;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,7 +15,7 @@ namespace FEBook.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        AccountDAO accountDAO = new AccountDAO();
         IBookRepository bookRepository = null;
         public HomeController() => bookRepository = new BookRepository();
 
@@ -39,5 +41,32 @@ namespace FEBook.Controllers
             return View(await Task.FromResult(searchBook.ToList()));
 
         }
+
+        public IActionResult Login()
+        {
+             System.Console.WriteLine(":(((");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult LoginReal(Account account)
+        {
+            System.Console.WriteLine(account.Email + " " + account.Passwords);
+            HttpContext.Session.SetString("email", "");            
+            try {
+                if (ModelState.IsValid) {
+                    //session here
+                    HttpContext.Session.SetString("email", accountDAO.LoginAccount(account.Email, account.Passwords).Email);   
+                    if (HttpContext.Session.GetString("email") != null) {
+                        return RedirectToAction("Index", "Major");
+                    }
+                }
+            } catch (Exception) {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        
+        
     }
 }

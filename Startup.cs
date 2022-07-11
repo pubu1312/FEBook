@@ -12,6 +12,7 @@ using FEBook.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace FEBook
 {
@@ -34,6 +35,16 @@ namespace FEBook
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            /* xai session o day nhe */
+            services.AddSession(options => {
+                    options.IdleTimeout = TimeSpan.FromMinutes(5);
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.IsEssential = true;
+                });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            /* ket thuc khai bao session */
+
             services.AddControllersWithViews();
         }
 
@@ -53,7 +64,8 @@ namespace FEBook
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();

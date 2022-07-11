@@ -42,6 +42,19 @@ namespace FEBook.DataAccess.DAO
         }
             return Account;
      }
+
+    public Account LoginAccount(string email, string password){ 
+        Account account = null;
+        try{
+            using var context = new EbookManagementContext();
+            account = context.Accounts.SingleOrDefault(c => c.Email == email);
+            if (!account.Passwords.Equals(password)) account = null;
+        }
+        catch(Exception ex){
+            throw new Exception(ex.Message);
+        }
+        return account;
+     }
      public void AddNew(Account Account){  
         try{
             Account _Account = GetAccountByID(Account.UserId);
