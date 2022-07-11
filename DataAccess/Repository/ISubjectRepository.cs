@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
 
-namespace FEBook.Controllers.Repository
+namespace FEBook.DataAccess.Repository
 {
     public interface ISubjectRepository
     {
@@ -12,5 +12,6 @@ namespace FEBook.Controllers.Repository
         Subject GetSubjectByID(int subjectID);
         void CreateSubject(Subject subject);
         void EditSubject(Subject subject);
+        void DeleteSubject(int subject);
     }
 }

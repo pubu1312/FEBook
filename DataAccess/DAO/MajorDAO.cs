@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
 
-namespace FEBook.Controllers.DAO
+namespace FEBook.DataAccess.DAO
 {
     public class MajorDAO
     {
@@ -66,6 +66,21 @@ namespace FEBook.Controllers.DAO
                 if (_Major != null) {
                     using var context = new EbookManagementContext();
                     context.Majors.Update(major);
+                    context.SaveChanges();
+                } else {
+                    throw new Exception("The Major does not not exist.");
+                }
+            } catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Delete(int majorId) {
+            try {
+                Major _Major = GetMajorByID(majorId);
+                if (_Major != null) {
+                    using var context = new EbookManagementContext();
+                    context.Majors.Remove(_Major);
                     context.SaveChanges();
                 } else {
                     throw new Exception("The Major does not not exist.");

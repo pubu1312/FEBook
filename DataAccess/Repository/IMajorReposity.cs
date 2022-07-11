@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
 
-namespace FEBook.Controllers.Repository
+namespace FEBook.DataAccess.Repository
 {
     public interface IMajorReposity
     {
@@ -14,5 +14,7 @@ namespace FEBook.Controllers.Repository
 
         void CreateMajor(Major major);
         void EditMajor(Major major);
+        void DeleteMajor(int major);
+        
     }
 }

@@ -2,27 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEBook.DAO;
+using FEBook.DataAccess.DAO;
 using FEBook.Models;
 
-namespace FEBook.Controllers.Repository
+namespace FEBook.DataAccess.Repository
 {
     public class MajorRepository : IMajorReposity
     {
         public IEnumerable<Major> GetMajors() {
-            return DAO.MajorDAO.Instance.GetMajorList();
+            return MajorDAO.Instance.GetMajorList();
         }
 
         public Major GetMajorByID(int MajorId) {
-            return DAO.MajorDAO.Instance.GetMajorByID(MajorId);
+            return MajorDAO.Instance.GetMajorByID(MajorId);
         }
 
         public void CreateMajor(Major major) {
-            DAO.MajorDAO.Instance.Create(major);
+            MajorDAO.Instance.Create(major);
         }
 
         public void EditMajor(Major major) {
-            DAO.MajorDAO.Instance.Edit(major);
+            MajorDAO.Instance.Edit(major);
+        }
+        public void DeleteMajor(int MajorId) {
+            MajorDAO.Instance.Delete(MajorId);
         }
 
     }

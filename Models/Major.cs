@@ -9,8 +9,8 @@ namespace FEBook.Models
     {
         public Major()
         {
-            Accounts = new HashSet<Account>();
-            Subjects = new HashSet<Subject>();
+            Accounts = new List<Account>();
+            Subjects = new List<Subject>();
         }
 
         public string MajorName { get; set; }

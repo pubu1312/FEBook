@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.Models;
 
-namespace FEBook.DAO
+namespace FEBook.DataAccess.DAO
 {
     public class SubjectDAO
     {
@@ -60,12 +60,27 @@ namespace FEBook.DAO
             }
         }
 
-        public void Edit(Subject Subject) {
+        public void Edit(Subject subject) {
             try {
-                Subject _Subject = GetSubjectByID(Subject.SubjectId);
+                Subject _Subject = GetSubjectByID(subject.SubjectId);
                 if (_Subject != null) {
                     using var context = new EbookManagementContext();
-                    context.Subjects.Update(Subject);
+                    context.Subjects.Update(subject);
+                    context.SaveChanges();
+                } else {
+                    throw new Exception("The Subject does not not exist.");
+                }
+            } catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Delete(int SubjectId) {
+            try {
+                Subject _Subject = GetSubjectByID(SubjectId);
+                if (_Subject != null) {
+                    using var context = new EbookManagementContext();
+                    context.Subjects.Remove(_Subject);
                     context.SaveChanges();
                 } else {
                     throw new Exception("The Subject does not not exist.");

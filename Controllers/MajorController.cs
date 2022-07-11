@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEBook.Controllers.Repository;
+using FEBook.DataAccess.Repository;
 using FEBook.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -78,6 +78,34 @@ namespace FEBook.Controllers
                 }
             } catch (Exception) {
                 
+            }
+            return View(major);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+   
+            if (id ==null) return NotFound();
+            Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
+            if (major == null) return NotFound();
+            return View(major);
+
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Major major)
+        {
+            try
+            {
+                var _major = majorRepository.GetMajorByID(major.MajorId);
+                if(_major == null) return NotFound();
+                if (ModelState.IsValid) {
+                    majorRepository.DeleteMajor(major.MajorId);
+                    return RedirectToAction(nameof(Index));
+                }
+            } catch (Exception) {
+                //
             }
             return View(major);
         }

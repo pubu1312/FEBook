@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEBook.DAO;
-using FEBook.Controllers.Repository;
+using FEBook.DataAccess.DAO;
+using FEBook.DataAccess.Repository;
 using FEBook.Models;
 
-namespace FEBook.Controllers.Repository
+namespace FEBook.DataAccess.Repository
 {
     public class SubjectRepository : ISubjectRepository
     {
@@ -24,6 +24,10 @@ namespace FEBook.Controllers.Repository
 
         public void EditSubject(Subject Subject) {
             SubjectDAO.Instance.Edit(Subject);
+        }
+
+        public void DeleteSubject(int SubjectId) {
+            SubjectDAO.Instance.Delete(SubjectId);
         }
     }
 }

@@ -1,3 +1,4 @@
+@model IEnumerable<Subject>
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,7 +20,7 @@
             {
                 <tr>
                     <td>@Subject.SubjectId</td>
-                    <td>@Subject.SubjectName</td>
+                    <td>@Subject.Subname</td>
                     <td>
                         <a asp-controller="Subject" asp-action="Detail" asp-route-id="@Subject.SubjectId">View details</a>
                     </td>
