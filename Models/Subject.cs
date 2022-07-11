@@ -9,7 +9,7 @@ namespace FEBook.Models
     {
         public Subject()
         {
-            Books = new HashSet<Book>();
+            Books = new List<Book>();
         }
 
         public int SubjectId { get; set; }
