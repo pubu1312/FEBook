@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FEBook.Controllers
 {
-    public class MajorController : Controller
+    public class SubjectController : Controller
     {
-        IMajorReposity majorRepository = null;
-        public MajorController() => majorRepository = new MajorRepository();
+        ISubjectRepository subjectRepository = null;
+        public SubjectController() => subjectRepository = new SubjectRepository();
 
         public IActionResult Index()
         {
-            var majorList = majorRepository.GetMajors();
-            return View(majorList);
+            var subjectList = subjectRepository.GetSubjects();
+            return View(subjectList);
         }
 
         public IActionResult Detail(int? id)
@@ -24,11 +24,11 @@ namespace FEBook.Controllers
             if (id == null) {
                 return NotFound();
             }
-            var major = majorRepository.GetMajorByID(id.Value);
-            if (major == null) {
+            var subject = subjectRepository.GetSubjectByID(id.Value);
+            if (subject == null) {
                 return NotFound();
             }
-            return View(major);
+            return View(subject);
         }
 
         public IActionResult Create()
@@ -38,18 +38,18 @@ namespace FEBook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Major major)
+        public IActionResult Create(Subject subject)
         {
             try
             {
                 if (ModelState.IsValid) {
-                    majorRepository.CreateMajor(major);
+                    subjectRepository.CreateSubject(subject);
                     return RedirectToAction(nameof(Index));
                 }
             } catch (Exception) {
                 
             }
-            return View(major);
+            return View(subject);
         }
 
         
@@ -58,57 +58,56 @@ namespace FEBook.Controllers
         {
    
             if (id ==null) return NotFound();
-            Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
-            if (major == null) return NotFound();
-            return View(major);
+            Subject subject = subjectRepository.GetSubjectByID(Convert.ToInt32(id));
+            if (subject == null) return NotFound();
+            return View(subject);
 
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Major major)
+        public IActionResult Edit(Subject subject)
         {
             try
             {
-                var _major = majorRepository.GetMajorByID(major.MajorId);
-                if(_major == null) return NotFound();
+                var _Subject = subjectRepository.GetSubjectByID(subject.SubjectId);
+                if(_Subject == null) return NotFound();
                 if (ModelState.IsValid) {
-                    majorRepository.EditMajor(major);
+                    subjectRepository.EditSubject(subject);
                     return RedirectToAction(nameof(Index));
                 }
             } catch (Exception) {
-                
+            
             }
-            return View(major);
+            return View(subject);
         }
 
         public IActionResult Delete(int? id)
         {
    
             if (id ==null) return NotFound();
-            Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
-            if (major == null) return NotFound();
-            return View(major);
+            Subject subject = subjectRepository.GetSubjectByID(Convert.ToInt32(id));
+            if (subject == null) return NotFound();
+            return View(subject);
 
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(Major major)
+        public IActionResult Delete(Subject subject)
         {
             try
             {
-                var _major = majorRepository.GetMajorByID(major.MajorId);
-                if(_major == null) return NotFound();
+                var _Subject = subjectRepository.GetSubjectByID(subject.SubjectId);
+                if(_Subject == null) return NotFound();
                 if (ModelState.IsValid) {
-                    majorRepository.DeleteMajor(major.MajorId);
+                    subjectRepository.DeleteSubject(subject.SubjectId);
                     return RedirectToAction(nameof(Index));
                 }
             } catch (Exception) {
                 //
             }
-            return View(major);
+            return View(subject);
         }
-
     }
 }

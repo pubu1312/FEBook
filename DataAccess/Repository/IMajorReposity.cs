@@ -14,5 +14,7 @@ namespace FEBook.DataAccess.Repository
 
         void CreateMajor(Major major);
         void EditMajor(Major major);
+        void DeleteMajor(int major);
+        
     }
 }

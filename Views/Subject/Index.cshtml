@@ -1,0 +1,32 @@
+@model IEnumerable<Subject>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <h2>
+        <a asp-controller="Subject" asp-action="Create">Create new Subject</a>
+    </h2>
+    <h2>Subjects</h2>
+    <table class="table table-striped table-bordered" id="sortTable">
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Subject in Model)
+            {
+                <tr>
+                    <td>@Subject.SubjectId</td>
+                    <td>@Subject.Subname</td>
+                    <td>
+                        <a asp-controller="Subject" asp-action="Detail" asp-route-id="@Subject.SubjectId">View details</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

@@ -6,84 +6,84 @@ using FEBook.Models;
 
 namespace FEBook.DataAccess.DAO
 {
-    public class MajorDAO
+    public class SubjectDAO
     {
-        private static MajorDAO instance = null;
+        private static SubjectDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static MajorDAO Instance {
+        public static SubjectDAO Instance {
             get {
                 lock (instanceLock) {
                     if (instance == null) {
-                        instance = new MajorDAO();
+                        instance = new SubjectDAO();
                     }
                     return instance;
                 }
             }
         }
 
-        public IEnumerable<Major> GetMajorList() {
-            var Majors = new List<Major>();
+        public IEnumerable<Subject> GetSubjectList() {
+            var Subjects = new List<Subject>();
             try {
                 using var context = new EbookManagementContext();
-                Majors = context.Majors.ToList();
+                Subjects = context.Subjects.ToList();
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
-            //System.Console.WriteLine(Majors.Count);
-            return Majors;
+            //System.Console.WriteLine(Subjects.Count);
+            return Subjects;
         }
 
-        public Major GetMajorByID(int majorId) {
-            Major major = null;
+        public Subject GetSubjectByID(int SubjectId) {
+            Subject Subject = null;
             try {
                 using var context = new EbookManagementContext();
-                major = context.Majors.SingleOrDefault(p => p.MajorId == majorId);
+                Subject = context.Subjects.SingleOrDefault(p => p.SubjectId == SubjectId);
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
-            return major;
+            return Subject;
         }
 
-        public void Create(Major major) {
+        public void Create(Subject Subject) {
             try {
-                Major _Major = GetMajorByID(major.MajorId);
+                Subject _Subject = GetSubjectByID(Subject.SubjectId);
                 //ID not collapse
-                if (_Major == null) {
+                if (_Subject == null) {
                     using var context = new EbookManagementContext();
-                    context.Majors.Add(major); 
+                    context.Subjects.Add(Subject); 
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Major is already exist.");
+                    throw new Exception("The Subject is already exist.");
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
         }
 
-        public void Edit(Major major) {
+        public void Edit(Subject subject) {
             try {
-                Major _Major = GetMajorByID(major.MajorId);
-                if (_Major != null) {
+                Subject _Subject = GetSubjectByID(subject.SubjectId);
+                if (_Subject != null) {
                     using var context = new EbookManagementContext();
-                    context.Majors.Update(major);
+                    context.Subjects.Update(subject);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Major does not not exist.");
+                    throw new Exception("The Subject does not not exist.");
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
         }
 
-        public void Delete(int majorId) {
+        public void Delete(int SubjectId) {
             try {
-                Major _Major = GetMajorByID(majorId);
-                if (_Major != null) {
+                Subject _Subject = GetSubjectByID(SubjectId);
+                if (_Subject != null) {
                     using var context = new EbookManagementContext();
-                    context.Majors.Remove(_Major);
+                    context.Subjects.Remove(_Subject);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Major does not not exist.");
+                    throw new Exception("The Subject does not not exist.");
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.Message);

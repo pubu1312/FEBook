@@ -1,0 +1,13 @@
+@model Subject
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="row">Create new Subject</h1><br/>
+<div class = "row">
+
+    <form method="POST" asp-action="Create">
+        SubjectName<input asp-for="Subname" class="form-control">
+        <input type="submit" value="Create" class="btn btn-primary">
+    </form>
+</div>

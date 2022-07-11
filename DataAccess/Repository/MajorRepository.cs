@@ -24,6 +24,9 @@ namespace FEBook.DataAccess.Repository
         public void EditMajor(Major major) {
             MajorDAO.Instance.Edit(major);
         }
+        public void DeleteMajor(int MajorId) {
+            MajorDAO.Instance.Delete(MajorId);
+        }
 
     }
 
