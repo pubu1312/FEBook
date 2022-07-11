@@ -37,7 +37,7 @@ namespace FEBook.DataAccess.DAO
             Major major = null;
             try {
                 using var context = new EbookManagementContext();
-                major = context.Majors.SingleOrDefault(p => p.MajorId == majorId);
+                major = context.Majors.SingleOrDefault(m => m.MajorId == majorId);
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
