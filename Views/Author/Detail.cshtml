@@ -1,0 +1,23 @@
+@model Author
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="container">
+    <h1>Author Details</h1>
+    <h4>@ViewBag.Message</h4>
+    <hr>
+    <div class="row">
+        <b class="col-6">AuthorId</b>
+        <div class="col-6">@Model.AuthorId</div>
+    </div>
+    <div class="row">
+        <b class="col-6">AuthorName</b>
+        <div class="col-6">@Model.AuthorName</div>
+    </div>
+    <br> 
+    <div>
+        @Html.ActionLink("Edit", "Edit", new {id = Model.AuthorId}) |
+        @Html.ActionLink("Back to list", "Index") |
+        @Html.ActionLink("Delete", "Delete", new {id = Model.AuthorId})
+    </div>
+</div>

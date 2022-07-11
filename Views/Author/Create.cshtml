@@ -1,0 +1,14 @@
+@model Author
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="row">Create new Author</h1><br/>
+<div class = "row">
+
+    <form method="POST" asp-action="Create">
+        AuthorName<input asp-for="AuthorName" class="form-control">
+        Profiles<input asp-for="Profiles" class="form-control">
+        <input type="submit" value="Create" class="btn btn-primary">
+    </form>
+</div>

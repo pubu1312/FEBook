@@ -8,12 +8,11 @@ namespace FEBook.DataAccess.Repository
 {
     public interface IAuthorRepository
     {
-        // IEnumerable<Author> GetAuthors();
-
-        // Author GetAuthorByID(int AuthorId);
-
-        // void CreateAuthor(Author Author);
-        // void EditAuthor(Author Author);
-        // void DeleteAuthor(int Author);
+        IEnumerable<Author> GetAuthors();
+        Author GetAuthorByID(int AuthorId);
+        void CreateAuthor(Author author);
+        void EditAuthor(Author author);
+        void DeleteAuthor(int author);
+        
     }
 }
