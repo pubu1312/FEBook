@@ -10,7 +10,7 @@ namespace FEBook.Controllers
 {
     public class MajorController : Controller
     {
-        IMajorReposity majorRepository = null;
+        IMajorRepository majorRepository = null;
         public MajorController() => majorRepository = new MajorRepository();
 
         public IActionResult Index()

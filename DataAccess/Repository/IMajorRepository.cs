@@ -6,7 +6,7 @@ using FEBook.Models;
 
 namespace FEBook.DataAccess.Repository
 {
-    public interface IMajorReposity
+    public interface IMajorRepository
     {
         IEnumerable<Major> GetMajors();
 

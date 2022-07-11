@@ -7,7 +7,7 @@ using FEBook.Models;
 
 namespace FEBook.DataAccess.Repository
 {
-    public class MajorRepository : IMajorReposity
+    public class MajorRepository : IMajorRepository
     {
         public IEnumerable<Major> GetMajors() {
             return MajorDAO.Instance.GetMajorList();
