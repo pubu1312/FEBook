@@ -1,3 +1,23 @@
+@model Book
 @{
     ViewData["Title"] = "Detail";
 }
+<div class="container">
+    <h1>Book Details</h1>
+    <h4>@ViewBag.Message</h4>
+    <hr>
+    <div class="row">
+        <b class="col-6">BookId</b>
+        <div class="col-6">@Model.BookId</div>
+    </div>
+    <div class="row">
+        <b class="col-6">BookName</b>
+        <div class="col-6">@Model.BookName</div>
+    </div>
+    <br> 
+    <div>
+        @Html.ActionLink("Edit", "Edit", new {id = Model.BookId}) |
+        @Html.ActionLink("Back to list", "Index") |
+        @Html.ActionLink("Delete", "Delete", new {id = Model.BookId})
+    </div>
+</div>
