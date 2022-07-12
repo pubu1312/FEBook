@@ -1,0 +1,19 @@
+@model Account
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="row">Create new Major</h1><br />
+<div class="row">
+
+    <form method="POST" asp-action="Create">
+        UserName<input asp-for="UserName" class="form-control">
+        Passwords<input asp-for="Passwords" class="form-control">
+        Roles<input asp-for="Roles" class="form-control">
+        FullName<input asp-for="FullName" class="form-control">
+        Email<input asp-for="Email" class="form-control">
+        MajorID<input asp-for="MajorId" class="form-control">
+        Phone<input asp-for="Phone" class="form-control">
+        <input type="submit" value="Create" class="btn btn-primary">
+    </form>
+</div>
