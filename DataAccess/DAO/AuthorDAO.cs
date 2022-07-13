@@ -55,7 +55,7 @@ namespace FEBook.DataAccess.DAO
                     context.SaveChanges();
 
                 } else { 
-                    throw new Exception("The Major is already exist");
+                    throw new Exception("The Author is already exist");
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
@@ -70,7 +70,7 @@ namespace FEBook.DataAccess.DAO
                     context.Authors.Update(author);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Major does not exist");
+                    throw new Exception("The Author does not exist");
 
                 } 
             } catch (Exception ex) {
