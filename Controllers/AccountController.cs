@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FEBook.Controllers
@@ -101,6 +102,20 @@ namespace FEBook.Controllers
 
             }
             return View(account);
+        }
+        public IActionResult Detail()
+        {
+             if (HttpContext.Session.GetString("email") != null) {
+                    ViewBag.userName = HttpContext.Session.GetString("UserName");
+                    ViewBag.roles = HttpContext.Session.GetString("Role");
+                    ViewBag.fullName = HttpContext.Session.GetString("FullName");
+                    ViewBag.phone = HttpContext.Session.GetString("Phone");
+                    
+                       return View();
+                    }
+            else {
+                return RedirectToAction("Index","Login");
+            }
         }
     }
 }
