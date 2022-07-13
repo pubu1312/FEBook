@@ -1,19 +1,217 @@
 @model Account
 @{
-    ViewData["Title"] = "Create";
+	ViewData["Title"] = "Create";
 }
 
-<h1 class="row">Create new Major</h1><br />
-<div class="row">
+<head>
+	<title>Account</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/util.css">
+	<link rel="stylesheet" href="/css/account.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/bootstrap4/bootstrap.min.css">
+	<link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" href="~/css/categories_styles.css">
+	<link rel="stylesheet" href="~/css/categories_responsive.css">
 
-    <form method="POST" asp-action="Create">
-        UserName<input asp-for="UserName" class="form-control">
-        Passwords<input asp-for="Passwords" class="form-control">
-        Roles<input asp-for="Roles" class="form-control">
-        FullName<input asp-for="FullName" class="form-control">
-        Email<input asp-for="Email" class="form-control">
-        MajorID<input asp-for="MajorId" class="form-control">
-        Phone<input asp-for="Phone" class="form-control">
-        <input type="submit" value="Create" class="btn btn-primary">
-    </form>
-</div>
+</head>
+
+<body>
+	<div class="super_container">
+		<!-- Header -->
+
+		<header class="header trans_300">
+
+			<!-- Top Navigation -->
+
+			<div class="top_nav">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="top_nav_left"></div>
+						</div>
+						<div class="col-md-6 text-right">
+							<div class="top_nav_right">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Main Navigation -->
+
+			<div class="main_nav_container">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-right">
+							<div class="logo_container">
+								<a href="index.html">FU<span> E-BOOK</span></a>
+							</div>
+							<nav class="navbar">
+
+								<ul class="navbar_menu">
+									<li><a class="home" href="index.html">HOME</a></li>
+								</ul>
+								<div class="dropdown">
+									<button class="dropbtn">Major</button>
+									<div class="dropdown-content">
+										<a href="#">Software Engineering</a>
+										<a href="#">Graphic Design</a>
+										<a href="#">Business Administration</a>
+									</div>
+								</div>
+								<div class="search-bar">
+									<input type="search" class="form-control rounded" placeholder="Search"
+										aria-label="Search" aria-describedby="search-addon" />
+									<button type="button" class="btn">search</button>
+								</div>
+								<ul class="navbar_user">
+									<div class="dropdown">
+										<img src="~/images/menu.png" alt="">
+										<div class="dropdown-content">
+											<a href="account.html">Account</a>
+											<a href="manageBook.html">Manage Book</a>
+											<a href="manageUser.html">Manage User</a>
+											<a href="bookHistory.html">Book History</a>
+											<a href="login.html">Logout</a>
+										</div>
+									</div>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+		<div class="fs_menu_overlay"></div>
+	</div>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form method="POST" asp-action="Create" class="login100-form validate-form">
+					<span class="login100-form-title">
+						Account
+					</span>
+					<div class="wrap-input100 validate-input">
+						<h5>Username</h5>
+						<input asp-for="UserName" class="input100" type="text" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<h5>Passwords</h5>
+						<input asp-for="Passwords" class="input100" type="password" placeholder="password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<h5>Email Address</h5>
+						<input asp-for="Email" class="input100" type="text" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<h5>FullName</h5>
+						<input asp-for="FullName" class="input100" type="text" placeholder="FullName">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<h5>Roles</h5>
+						<input asp-for="Roles" class="input100" type="text" placeholder="Roles">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100">
+						<h5>MajorID</h5>
+						<input asp-for="MajorId" class="input100" type="text" placeholder="MajorId">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input">
+						<h5>Phone Number</h5>
+						<input input asp-for="Phone" class="input100" type="text" placeholder="Phone Number"
+							value="113">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						<input type="submit" value="Create" button class="login100-form-btn">
+							</button>
+					</div>
+				</form>
+					<a asp-action="Index"><button class="btn btn-success">Back</button></a>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	</div>
+
+
+
+	<!--===============================================================================================-->
+	<script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/vendor/bootstrap/js/popper.js"></script>
+	<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/vendor/tilt/tilt.jquery.min.js"></script>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="~/js/main.js"></script>
+
+</body>
+
+</html>
