@@ -1,0 +1,41 @@
+@model IEnumerable<Account>
+@{
+    ViewData["Title"] = "Account Index";
+}
+
+<div class="container">
+    <h2>
+        <a asp-controller="Account" asp-action="Create">Create new Account</a>
+    </h2>
+    <h2>Account</h2>
+    <table class="table table-striped table-bordered" id="sortTable">
+        <thead>
+            <tr>
+                <th>UserID</th>
+                <th>Username</th>
+                <td>Passwords</td>
+                <th>Roles</th>
+                <th>Fullname</th>
+                <th>email</th>
+                <th>phone</th>
+            </tr>
+        </thead>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.UserId</td>
+                <td>@account.UserName</td>
+                <td>@account.Passwords</td>
+                <td>@account.Roles</td>
+                <td>@account.FullName</td>
+                <td>@account.Email</td>
+                <td>@account.Phone</td>
+                <td>
+                        @Html.ActionLink("Edit", "Edit", new {id = account.UserId}) |
+                        @Html.ActionLink("Delete", "Delete", new {id = account.UserId}) 
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

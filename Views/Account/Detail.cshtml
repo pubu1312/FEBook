@@ -1,0 +1,40 @@
+@model Account
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="container">
+    <h1>Account Details</h1>
+    <h4>@ViewBag.Message</h4>
+    <hr>
+    <div class="row">
+        <b class="col-6">UserID</b>
+        <div class="col-6">@Model.UserId</div> 
+    </div>
+    <div class="row">
+        <b class="col-6">UserName</b>
+        <div class="col-6">@Model.UserName</div>
+    </div>
+       <div class="row">
+        <b class="col-6">Roles</b>
+        <div class="col-6">@Model.Roles</div>
+    </div>
+       <div class="row">
+        <b class="col-6">FullName</b>
+        <div class="col-6">@Model.FullName</div>
+    </div>
+       <div class="row">
+        <b class="col-6">Email</b>
+        <div class="col-6">@Model.Email</div>
+    </div>
+      </div>
+       <div class="row">
+        <b class="col-6">Phone</b>
+        <div class="col-6">@Model.Phone</div>
+    </div>
+    <br> 
+    <div>
+        @Html.ActionLink("Edit", "Edit", new {id = Model.UserId}) |
+        @Html.ActionLink("Back to list", "Index") |
+        @Html.ActionLink("Delete", "Delete", new {id = Model.UserId})
+    </div>
+</div>
