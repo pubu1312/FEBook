@@ -25,7 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="~/styles/util.css">
 	<link rel="stylesheet" type="text/css" href="~/styles/account.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="~/css/bootstrap4/bootstrap.min.css">
 	<link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
@@ -65,12 +65,12 @@
 				<div class="row">
 					<div class="col-lg-12 text-right">
 						<div class="logo_container">
-							<a href="index.html">FU<span> E-BOOK</span></a>
+							<a href="index.cshtml">FU<span> E-BOOK</span></a>
 						</div>
 						<nav class="navbar">
 							
 							<ul class="navbar_menu">
-								<li><a class="home" href="index.html">HOME</a></li>
+								<li><a class="home"  asp-controller="Home" asp-action="Index">HOME</a></li>
 							</ul>
 							<div class="dropdown">
 								<button class="dropbtn">Major</button>
@@ -89,11 +89,11 @@
 								<div class="dropdown">
 									<img src="images/menu.png" alt="">
 									<div class="dropdown-content">
-										<a href="account.html">Account</a>
-											<a href="manageBook.html">Manage Book</a>
-											<a href="manageUser.html">Manage User</a>
-											<a href="bookHistory.html">Book History</a>
-											<a href="login.html">Logout</a>
+										<a href="account.cshtml">Account</a>
+											<a href="manageBook.cshtml">Manage Book</a>
+											<a href="manageUser.cshtml">Manage User</a>
+											<a href="bookHistory.cshtml">Book History</a>
+											<a href="login.cshtml">Logout</a>
 									</div>
 								</div>
 							</ul>
@@ -191,7 +191,7 @@
 						<ul class="footer_nav">
 							<li><a href="#">Blog</a></li>
 							<li><a href="#">FAQs</a></li>
-							<li><a href="contact.html">Contact us</a></li>
+							<li><a href="contact.cshtml">Contact us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -223,14 +223,14 @@
 
 
 	<!--===============================================================================================-->
-	<script src="~/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="css/bootstrap4/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/css/bootstrap4/popper.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="/vendor/select2/select2.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script src="/vendor/tilt/tilt.jquery.min.js"></script>
 	<script>
 		$('.js-tilt').tilt({
 			scale: 1.1

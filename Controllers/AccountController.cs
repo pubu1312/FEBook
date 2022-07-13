@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FEAccount.Controllers
@@ -97,6 +99,21 @@ namespace FEAccount.Controllers
                 return View();
             }
         }
+          public IActionResult Detail()
+        {
+             if (HttpContext.Session.GetString("email") != null) {
+                    ViewBag.userName = HttpContext.Session.GetString("UserName");
+                    ViewBag.roles = HttpContext.Session.GetString("Role");
+                    ViewBag.fullName = HttpContext.Session.GetString("FullName");
+                    ViewBag.phone = HttpContext.Session.GetString("Phone");
+                    
+                       return View();
+                    }
+            else {
+                return RedirectToAction("Index","Login");
+            }
+        }
+
         
 
     }

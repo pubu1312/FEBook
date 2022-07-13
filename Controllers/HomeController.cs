@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.DAO;
@@ -44,7 +45,6 @@ namespace FEBook.Controllers
 
         public IActionResult Login()
         {
-             System.Console.WriteLine(":(((");
             return View();
         }
 
@@ -60,13 +60,14 @@ namespace FEBook.Controllers
                     if (HttpContext.Session.GetString("email") != null) {
                         return RedirectToAction("Index", "Major");
                     }
+                    
                 }
             } catch (Exception) {
 
             }
             return RedirectToAction("Index", "Home");
         }
-        
-        
+
+       
     }
 }
