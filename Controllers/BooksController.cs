@@ -24,7 +24,6 @@ namespace EbookProject.Controllers
 
             }
             return View(await Task.FromResult(searchBook.ToList()));
-
         }
         
         public ActionResult Detail(int? id)
