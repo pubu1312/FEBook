@@ -44,7 +44,7 @@ namespace FEBook.Controllers
 
         public IActionResult Login()
         {
-             System.Console.WriteLine(":(((");
+            
             return View();
         }
 
