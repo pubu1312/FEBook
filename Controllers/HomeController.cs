@@ -19,8 +19,7 @@ namespace FEBook.Controllers
         IBookRepository bookRepository = null;
         public HomeController() => bookRepository = new BookRepository();
 
-        public IActionResult Privacy()
-        {
+        public IActionResult Privacy(){
             return View();
         }
 
@@ -42,9 +41,7 @@ namespace FEBook.Controllers
 
         }
 
-        public IActionResult Login()
-        {
-            
+        public IActionResult Login(){
             return View();
         }
 
@@ -65,6 +62,14 @@ namespace FEBook.Controllers
 
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Register(){
+            return View();
+        }
+
+        public IActionResult ForgotPass(){
+            return View();
         }
         
         
