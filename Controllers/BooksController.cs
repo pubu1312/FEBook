@@ -11,61 +11,57 @@ using FEBook.DataAccess.Repository;
 
 namespace EbookProject.Controllers
 {
-    public class BooksController : Controller{
-        IBookRepository BookRepository = null;
-        public BooksController() => BookRepository = new BookRepository();
-        public async Task<ActionResult> Index(string searchString)
-        {
-            var BookList = BookRepository.GetBooks();
-            var searchBook = from book in BookList select book;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                searchBook = searchBook.Where(c => c.BookName!.Contains(searchString));
-
-            }
-            return View(await Task.FromResult(searchBook.ToList()));
-
+    public class BooksController : Controller
+    {
+        IBookRepository bookRepository = null;
+        public BooksController() => bookRepository = new BookRepository();
+        
+        public IActionResult Index() {
+            var bookList = bookRepository.GetBooks();
+            return View(bookList);
         }
         
-        public ActionResult Detail(int? id)
+        public IActionResult DetailView(int? id)
         {
-            if (id == null)
-            {
+            if (id == null) {
                 return NotFound();
             }
-            var Book = BookRepository.GetBookByID(id.Value);
-            if (Book == null)
-            {
+            var book = bookRepository.GetBookByID(id.Value);
+            if (book == null) {
                 return NotFound();
             }
-            return View(Book);
+            return View(book);
         }
-        public ActionResult Create() => View();
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book Book)
+        public IActionResult Create(Book book)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    BookRepository.InsertBook(Book);
+                if (ModelState.IsValid) {
+                    bookRepository.InsertBook(book);
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+            } catch (Exception) {
+                //
             }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                return View(Book);
-            }
+            return View(book);
         }
-        public ActionResult Edit(int? id)
+
+        
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var Book = BookRepository.GetBookByID(id.Value);
+            var Book = bookRepository.GetBookByID(id.Value);
             if (Book == null)
             {
                 return NotFound();
@@ -74,7 +70,7 @@ namespace EbookProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Book Book)
+        public IActionResult Edit(int id, Book Book)
         {
             try
             {
@@ -84,7 +80,7 @@ namespace EbookProject.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    BookRepository.UpdateBook(Book);
+                    bookRepository.UpdateBook(Book);
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -94,13 +90,13 @@ namespace EbookProject.Controllers
                 return View();
             }
         }
-        public ActionResult Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var Book = BookRepository.GetBookByID(id.Value);
+            var Book = bookRepository.GetBookByID(id.Value);
             if (Book == null)
             {
                 return NotFound();
@@ -109,11 +105,11 @@ namespace EbookProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                BookRepository.DeleteBook(id);
+                bookRepository.DeleteBook(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)

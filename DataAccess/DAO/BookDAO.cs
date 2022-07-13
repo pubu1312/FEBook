@@ -42,7 +42,9 @@ namespace FEBook.DataAccess.DAO
         }
             return Book;
      }
-     public void AddNew(Book Book){  
+
+    
+    public void AddNew(Book Book){  
         try{
             Book _Book = GetBookByID(Book.BookId);
             if(_Book == null){
