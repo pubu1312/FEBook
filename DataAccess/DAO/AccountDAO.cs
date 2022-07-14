@@ -42,6 +42,21 @@ namespace FEBook.DataAccess.DAO
         }
             return Account;
      }
+    
+    public Account GetAccountByEmail(string Email){ 
+        Account Account = null;
+        try{
+            using var context = new EbookManagementContext();
+            foreach(var account in context.Accounts) {
+                if (account.Email == Email) return account;
+            }
+            System.Console.WriteLine("Not found");
+        }
+        catch(Exception ex){
+            throw new Exception(ex.Message);
+        }
+            return Account;
+    }
 
     public Account LoginAccount(string email, string password){ 
         Account account = null;

@@ -18,6 +18,11 @@ namespace FEBook.DataAccess.Repository
         {
             return AccountDAO.Instance.GetAccountByID(AccountID);
         }
+
+        public Account GetAccountByEmail(string Email)
+        {
+            return AccountDAO.Instance.GetAccountByEmail(Email);
+        }
       
         public void InsertAccount(Account Account)
         {

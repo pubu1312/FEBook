@@ -55,13 +55,13 @@ namespace FEBook.Controllers
                     //session here
                     HttpContext.Session.SetString("email", accountDAO.LoginAccount(account.Email, account.Passwords).Email);   
                     if (HttpContext.Session.GetString("email") != null) {
-                        return RedirectToAction("Index", "Major");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
             } catch (Exception) {
 
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
 
         public IActionResult Register(){
