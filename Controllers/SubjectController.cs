@@ -102,9 +102,7 @@ namespace FEBook.Controllers
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
-            Subject subject = subjectRepository.GetSubjectByID(Convert.ToInt32(id));
-            subjectRepository.DeleteSubject(subject.SubjectId);
-            if (subject == null) return NotFound();
+            subjectRepository.DeleteSubject(Convert.ToInt32(id));
             return RedirectToAction(nameof(Index));
         }
 
@@ -114,6 +112,16 @@ namespace FEBook.Controllers
             else
             {
                 subjectRepository.DeleteOnce(Convert.ToInt32(id));
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Restore(int? id)
+        {
+            if (id == null) return NotFound();
+            else
+            {
+                subjectRepository.Restore(Convert.ToInt32(id));
             }
             return RedirectToAction(nameof(Index));
         }

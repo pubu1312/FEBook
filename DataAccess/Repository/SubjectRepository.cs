@@ -35,5 +35,10 @@ namespace FEBook.DataAccess.Repository{
         public void DeleteOnce(int SubjectId){
             SubjectDAO.Instance.DeleteOnce(SubjectId);
         }
+
+        public void Restore(int SubjectId)
+        {
+            SubjectDAO.Instance.Restore(SubjectId);
+        }
     }
 }

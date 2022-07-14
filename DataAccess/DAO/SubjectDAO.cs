@@ -42,8 +42,6 @@ namespace FEBook.DataAccess.DAO
             return Subjects;
         }
 
-        
-
         public IEnumerable<Subject> GetSubjectDeletedList()
         {
             var Subjects = new List<Subject>();
@@ -148,6 +146,28 @@ namespace FEBook.DataAccess.DAO
                 {
                     using var context = new EbookManagementContext();
                     _Subject.DeleteStatus=true;
+                    context.Subjects.Update(_Subject);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The Subject does not not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        internal void Restore(int subjectId)
+        {
+            try{
+                Subject _Subject = GetSubjectByID(subjectId);
+                if (_Subject != null)
+                {
+                    using var context = new EbookManagementContext();
+                    _Subject.DeleteStatus=false;
                     context.Subjects.Update(_Subject);
                     context.SaveChanges();
                 }

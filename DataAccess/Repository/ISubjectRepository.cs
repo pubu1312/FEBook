@@ -15,5 +15,6 @@ namespace FEBook.DataAccess.Repository
         void EditSubject(Subject subject);
         void DeleteSubject(int subject);
         void DeleteOnce(int subject);
+        void Restore(int subject);
     }
 }
