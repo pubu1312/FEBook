@@ -16,8 +16,8 @@ namespace FEBook.Controllers
     public class HomeController : Controller
     {
         AccountDAO accountDAO = new AccountDAO();
-        IBookRepository bookRepository = null;
-        public HomeController() => bookRepository = new BookRepository();
+        IBookRepository BookRepository = null;
+        public HomeController() => BookRepository = new BookRepository();
 
         public IActionResult Privacy()
         {
@@ -31,7 +31,7 @@ namespace FEBook.Controllers
         
         public async Task<ActionResult> Index(string searchString)
         {
-            var BookList = bookRepository.GetBooks();
+            var BookList = BookRepository.GetBooks();
             var searchBook = from book in BookList select book;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -65,6 +65,19 @@ namespace FEBook.Controllers
 
             }
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult ViewBook(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var Book = BookRepository.GetBookByID(id.Value);
+            if (Book == null)
+            {
+                return NotFound();
+            }
+            return View(Book);
         }
         
         
