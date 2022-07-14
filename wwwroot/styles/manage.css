@@ -21,14 +21,19 @@
   color: #b5aec4;
   text-transform: uppercase;
 }
-
+.table.table tr th {
+  font-size: 22px;
+}
+.table.table tr td {
+  font-size: 18px;
+}
 /*********************************
 3.2 Navgiation
 *********************************/
 /* Menu Button */
 
 .navbar_user {
-  padding-left: 820px;
+  padding-left: 800px;
 }
 .navbar_user .dropdown {
   margin-top: -83px;
@@ -48,6 +53,9 @@
 }
 
 /* Dropdown Button */
+.menu {
+  margin-left: 250px;
+}
 .dropbtn {
   background: #FFFFFF;
   color: #1e1e27;
@@ -59,24 +67,40 @@
   box-sizing: border-box;
   ;
 }
+.navbar .dropdown {
+  margin-top: -18px;
+  margin-left: 240px;
+  display: block;
+}
+.menu {
+  margin-top: -50px;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
+/* Show the dropdown menu on hover */
+.menu:hover .dropdown-content {
+  display: block;
+}
 .home {
   display: block;
   color: #1e1e27;
   font-size: 20px;
   float: left;
   text-transform: uppercase;
-  margin-left: 150px;
-  padding-top: 42px;
+  margin-left: 150px; 
+  padding-top: 24px;
+  height: 100px;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-
   width: 1px;
   padding-top: 41px;
   margin-left: 230px;
 }
+
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -136,7 +160,7 @@
   display: flex;
   flex-direction: row;
   margin-left: 350px;
-  margin-top: -38px;
+  margin-top: -125px;
 }
 
 .search-bar .form-control {
@@ -261,6 +285,7 @@ body {
   background: #f5f5f5;
   font-family: 'Varela Round', sans-serif;
   font-size: 13px;
+  margin-left: -300px;
 }
 
 .table-wrapper {
@@ -269,6 +294,7 @@ body {
   margin: 30px 0;
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  width: 130%;
 }
 
 .table-title {
@@ -491,6 +517,11 @@ table.table .avatar {
 }
 
 /* Modal styles */
+.footer {
+}
+.footer .col-lg-12 .cr {
+  margin-left: -10px;
+}
 .modal .modal-dialog {
   width: 1000px;
 }
@@ -541,10 +572,9 @@ table.table .avatar {
 /*********************************
 10. Footer
 *********************************/
-
 .footer_nav_container {
   height: 130px;
-  margin-left: 280px;
+  margin-left: 130px;
 }
 
 .cr {

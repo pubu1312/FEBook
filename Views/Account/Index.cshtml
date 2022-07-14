@@ -112,8 +112,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <a asp-action="Create"><button class="btn btn-success">Add new user</button></a>
-                                        <a href="#deleteUserModal" class="btn btn-danger" data-toggle="modal"><i
-                                                class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                                        <a href="#deleteUserModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+
                                     </div>
                                 </div>
                             </div>
@@ -130,8 +130,7 @@
                                         <th>Phone</th>
                                         <th>Actions</th>
                                         </th>
-                                        @foreach (var account in Model)
-                                        {
+                                        @foreach (var account in Model){
                                         <tr>
                                             <td></td>
                                             <td>@account.UserId</td>
@@ -142,11 +141,9 @@
                                             <td>@account.Email</td>
                                             <td>@account.Phone</td>
                                             <td>
-                                                <a class="fa fa-pencil fa-2x" aria-hidden="true" asp-controller="Account"
-                                                asp-action="Edit" asp-route-Id="@account.UserId"></a>
-                                                <a style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true"
-                                                asp-controller="Account" asp-action="Delete"
-                                                asp-route-Id="@account.UserId"></a>
+                                                <a class="fa fa-pencil fa-2x" aria-hidden="true" asp-controller="Account" asp-action="Edit" asp-route-Id="@account.UserId"></a>
+                                                <a style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Account" asp-action="Delete" asp-route-Id="@account.UserId"></a>
+
                                             </td>
                                         </tr>
                                         }
