@@ -19,19 +19,24 @@ namespace FEBook.Controllers
         {
             dynamic model = new ExpandoObject();
             model.userEmail = HttpContext.Session.GetString("email");
-            model.subjectList = new List<Major>();
+            model.subjectList = new List<Subject>();
             model.subjectList = subjectRepository.GetSubjects();
-            
+
+            model.subjectDeletedList = new List<Subject>();
+            model.subjectDeletedList = subjectRepository.GetDeletedSubjects();
+
             return View(model);
         }
 
         public IActionResult Detail(int? id)
         {
-            if (id == null) {
+            if (id == null)
+            {
                 return NotFound();
             }
             var subject = subjectRepository.GetSubjectByID(id.Value);
-            if (subject == null) {
+            if (subject == null)
+            {
                 return NotFound();
             }
             return View(subject);
@@ -48,28 +53,31 @@ namespace FEBook.Controllers
         {
             try
             {
-                if (ModelState.IsValid) {
+                if (ModelState.IsValid)
+                {
                     subjectRepository.CreateSubject(subject);
                     return RedirectToAction(nameof(Index));
                 }
-            } catch (Exception) {
-                
+            }
+            catch (Exception)
+            {
+
             }
             return View(subject);
         }
 
-        
+
 
         public IActionResult Edit(int? id)
         {
-   
-            if (id ==null) return NotFound();
+
+            if (id == null) return NotFound();
             Subject subject = subjectRepository.GetSubjectByID(Convert.ToInt32(id));
             if (subject == null) return NotFound();
             return View(subject);
 
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Subject subject)
@@ -77,43 +85,46 @@ namespace FEBook.Controllers
             try
             {
                 var _Subject = subjectRepository.GetSubjectByID(subject.SubjectId);
-                if(_Subject == null) return NotFound();
-                if (ModelState.IsValid) {
+                if (_Subject == null) return NotFound();
+                if (ModelState.IsValid)
+                {
                     subjectRepository.EditSubject(subject);
                     return RedirectToAction(nameof(Index));
                 }
-            } catch (Exception) {
-            
+            }
+            catch (Exception)
+            {
+
             }
             return View(subject);
         }
 
         public IActionResult Delete(int? id)
         {
-   
-            if (id ==null) return NotFound();
-            Subject subject = subjectRepository.GetSubjectByID(Convert.ToInt32(id));
-            if (subject == null) return NotFound();
-            return View(subject);
+            if (id == null) return NotFound();
+            subjectRepository.DeleteSubject(Convert.ToInt32(id));
+            return RedirectToAction(nameof(Index));
+        }
 
-        }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(Subject subject)
+        public IActionResult DeleteOnce(int? id)
         {
-            try
+            if (id == null) return NotFound();
+            else
             {
-                var _Subject = subjectRepository.GetSubjectByID(subject.SubjectId);
-                if(_Subject == null) return NotFound();
-                if (ModelState.IsValid) {
-                    subjectRepository.DeleteSubject(subject.SubjectId);
-                    return RedirectToAction(nameof(Index));
-                }
-            } catch (Exception) {
-                //
+                subjectRepository.DeleteOnce(Convert.ToInt32(id));
             }
-            return View(subject);
+            return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Restore(int? id)
+        {
+            if (id == null) return NotFound();
+            else
+            {
+                subjectRepository.Restore(Convert.ToInt32(id));
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
