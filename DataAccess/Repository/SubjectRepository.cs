@@ -6,12 +6,14 @@ using FEBook.DataAccess.DAO;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
 
-namespace FEBook.DataAccess.Repository
-{
-    public class SubjectRepository : ISubjectRepository
-    {
+namespace FEBook.DataAccess.Repository{
+    public class SubjectRepository : ISubjectRepository{
         public IEnumerable<Subject> GetSubjects() {
             return SubjectDAO.Instance.GetSubjectList();
+        }
+
+        public IEnumerable<Subject> GetDeletedSubjects(){
+            return SubjectDAO.Instance.GetSubjectDeletedList();
         }
 
         public Subject GetSubjectByID(int SubjectId) {
@@ -28,6 +30,10 @@ namespace FEBook.DataAccess.Repository
 
         public void DeleteSubject(int SubjectId) {
             SubjectDAO.Instance.Delete(SubjectId);
+        }
+
+        public void DeleteOnce(int SubjectId){
+            SubjectDAO.Instance.DeleteOnce(SubjectId);
         }
     }
 }
