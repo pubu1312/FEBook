@@ -66,6 +66,7 @@
                                             <a href="#">Graphic Design</a>
                                             <a href="#">Business Administration</a>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="search-bar">
@@ -100,6 +101,7 @@
 
         <div class="container product_section_container">
             <div class="row">
+
                 <body>
                     <div class="container">
                         <div class="table-wrapper">
@@ -111,6 +113,7 @@
                                     <div class="col-sm-6">
                                         <a asp-action="Create"><button class="btn btn-success">Add new user</button></a>
                                         <a href="#deleteUserModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+
                                     </div>
                                 </div>
                             </div>
@@ -140,6 +143,7 @@
                                             <td>
                                                 <a class="fa fa-pencil fa-2x" aria-hidden="true" asp-controller="Account" asp-action="Edit" asp-route-Id="@account.UserId"></a>
                                                 <a style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Account" asp-action="Delete" asp-route-Id="@account.UserId"></a>
+
                                             </td>
                                         </tr>
                                         }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FEBook.Controllers
@@ -15,8 +17,12 @@ namespace FEBook.Controllers
 
         public IActionResult Index()
         {
-            var subjectList = subjectRepository.GetSubjects();
-            return View(subjectList);
+            dynamic model = new ExpandoObject();
+            model.userEmail = HttpContext.Session.GetString("email");
+            model.subjectList = new List<Major>();
+            model.subjectList = subjectRepository.GetSubjects();
+            
+            return View(model);
         }
 
         public IActionResult Detail(int? id)
