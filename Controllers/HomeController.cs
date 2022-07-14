@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.DAO;
@@ -17,6 +18,7 @@ namespace FEBook.Controllers
     {
         AccountDAO accountDAO = new AccountDAO();
         IBookRepository bookRepository = null;
+        IAccountRepository accountRepository = null;
         public HomeController() => bookRepository = new BookRepository();
 
         public IActionResult Privacy(){
@@ -30,14 +32,27 @@ namespace FEBook.Controllers
         
         public async Task<ActionResult> Index(string searchString)
         {
+            dynamic model = new ExpandoObject();
+            string userEmail = HttpContext.Session.GetString("email");
+            
+             Account acc = null;
+            if(userEmail != null){
+                accountRepository = new AccountRepository();
+                acc = accountRepository.GetAccountByEmail(userEmail);
+
+            }
+
             var BookList = bookRepository.GetBooks();
             var searchBook = from book in BookList select book;
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 searchBook = searchBook.Where(c => c.BookName!.Contains(searchString));
 
             }
-            return View(await Task.FromResult(searchBook.ToList()));
+            model.userSession = acc;
+            model.searchBook = searchBook.Reverse();
+            return View(await Task.FromResult(model));
 
         }
 
@@ -63,6 +78,13 @@ namespace FEBook.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
+      public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult Register(){
             return View();
@@ -71,6 +93,7 @@ namespace FEBook.Controllers
         public IActionResult ForgotPass(){
             return View();
         }
+
         
         
     }
