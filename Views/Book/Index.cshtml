@@ -122,9 +122,7 @@
                                         <th>Book Name</th>
                                         <th>Book Cover</th>
                                         <th>Year Of Public</th>
-                                        <th>Summary</th>
                                         <th>Languages</th>
-                                        <th>Content</th>
                                         <th>Update Date</th>
                                         </th>
                                         @foreach (var Book in Model){
@@ -132,15 +130,13 @@
                                             <td></td>
                                             <td>@Book.BookId</td>
                                             <td>@Book.BookName</td>
-                                            <td>@Book.BookCover</td>
+                                            <td><img src="@Book.BookCover" height="284" width="173" alt=""></td>
                                             <td>@Book.YearOfPublic</td>
-                                            <td>@Book.Summary</td>
                                             <td>@Book.Languages</td>
-                                            <td>@Book.Content</td>
                                             <td>@Book.UpdateDate</td>
                                             
                                             <td>
-                                                <a class="fa fa-pencil fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Edit" asp-route-Id="@Book.BookId"></a>
+                                                <a class="fa fa-pencil fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Detail" asp-route-Id="@Book.BookId"></a>
                                                 <a style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Delete" asp-route-Id="@Book.BookId"></a>
                                             </td>
                                         </tr>

@@ -26,11 +26,13 @@ namespace FEBook.Controllers
 
         public IActionResult Detail(int? id)
         {
-            if (id == null) {
+            if (id == null)
+            {
                 return NotFound();
             }
             var major = majorRepository.GetMajorByID(id.Value);
-            if (major == null) {
+            if (major == null)
+            {
                 return NotFound();
             }
             return View(major);
@@ -47,28 +49,31 @@ namespace FEBook.Controllers
         {
             try
             {
-                if (ModelState.IsValid) {
+                if (ModelState.IsValid)
+                {
                     majorRepository.CreateMajor(major);
                     return RedirectToAction(nameof(Index));
                 }
-            } catch (Exception) {
-                
+            }
+            catch (Exception)
+            {
+
             }
             return View(major);
         }
 
-        
+
 
         public IActionResult Edit(int? id)
         {
-   
-            if (id ==null) return NotFound();
+
+            if (id == null) return NotFound();
             Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
             if (major == null) return NotFound();
             return View(major);
 
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Major major)
@@ -76,43 +81,28 @@ namespace FEBook.Controllers
             try
             {
                 var _major = majorRepository.GetMajorByID(major.MajorId);
-                if(_major == null) return NotFound();
-                if (ModelState.IsValid) {
+                if (_major == null) return NotFound();
+                if (ModelState.IsValid)
+                {
                     majorRepository.EditMajor(major);
                     return RedirectToAction(nameof(Index));
                 }
-            } catch (Exception) {
-                
+            }
+            catch (Exception)
+            {
+
             }
             return View(major);
         }
 
         public IActionResult Delete(int? id)
         {
-   
-            if (id ==null) return NotFound();
-            Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
-            if (major == null) return NotFound();
-            return View(major);
 
-        }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(Major major)
-        {
-            try
-            {
-                var _major = majorRepository.GetMajorByID(major.MajorId);
-                if(_major == null) return NotFound();
-                if (ModelState.IsValid) {
-                    majorRepository.DeleteMajor(major.MajorId);
-                    return RedirectToAction(nameof(Index));
-                }
-            } catch (Exception) {
-                //
-            }
-            return View(major);
+            if (id == null) return NotFound();
+            Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
+            majorRepository.DeleteMajor(major.MajorId);
+            if (major == null) return NotFound();
+            return RedirectToAction(nameof(Index));
         }
 
     }
