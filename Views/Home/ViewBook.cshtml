@@ -1,6 +1,6 @@
 @model Book
 @{
-	ViewData["Title"] = "BookView";
+    ViewData["Title"] = "BookView";
 }
 
 <head>
@@ -125,8 +125,6 @@
 											<ul>
 												<li>
 													<div class="product_image">
-
-
 													</div>
 												</li>
 											</ul>
@@ -206,7 +204,7 @@
 												<h4>Description</h4>
 											</div>
 											<div class="tab_text_block">
-												<div class="col-6">@Model.Content</div>
+												<div class="col-6">@Model.Content</div> 
 											</div>
 										</div>
 									</div>
@@ -220,9 +218,9 @@
 											<div class="tab_title additional_info_title">
 												<h4>Additional Information</h4>
 											</div>
-											<p>Originally published:</p>
-											<div class="col-6">@Model.YearOfPublic</div>
-											@* <p>Author:</p> <div class="col-6">@Model.Account</div> *@
+
+											<p>Originally published:</p><div class="col-6">@Model.YearOfPublic</div>
+											<p>Author:</p> <div class="col-6">@Model.BookAuthors</div>
 										</div>
 									</div>
 								</div>
@@ -388,7 +386,9 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="footer_nav_container">
-									<div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
+									<div class="cr">©2018 All Rights Reserverd. This template is made with <i
+											class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a>
+										&amp; distributed by <a href="https://themewagon.com">ThemeWagon</a></div>
 								</div>
 							</div>
 						</div>

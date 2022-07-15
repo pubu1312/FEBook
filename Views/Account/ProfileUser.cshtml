@@ -61,46 +61,58 @@
 		<!-- Main Navigation -->
 
 		<div class="main_nav_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 text-right">
-                            <div class="logo_container">
-                                <a asp-controller="Home" asp-action="Index">F<span>E-Book</span></a>
-                            </div>
-                            <nav class="navbar">
-                                <div>
-                                    <a class="home" asp-controller="Home" asp-action="Index">HOME</a>
-                                    <div class="dropdown">
-                                        <button class="dropbtn">Major</button>
-                                        <div class="dropdown-content">
-                                            <a href="#">Software Engineering</a>
-                                            <a href="#">Graphic Design</a>
-                                            <a href="#">Business Administration</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="search-bar">
-                                    <input type="search" class="form-control rounded" placeholder="Search"
-                                        aria-label="Search" aria-describedby="search-addon" />
-                                    <button type="button" class="btn">search</button>
-                                </div>
-                                <ul class="navbar_user">
-                                    <div class="menu">
-                                        <img src="~/images/menu.png" alt="">
-                                        <div class="dropdown-content">
-                                            <a asp-controller="Subject" asp-action="Index">Subject</a>
-                                            <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
-                                            <a asp-controller="Subject" asp-action="Index">Manage User</a>
-                                            <a asp-controller="Home" asp-action="Index">Subject History</a>
-                                            <a asp-controller="Home" asp-action="Login">Logout</a>
-                                        </div>
-                                    </div>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-right">
+						<div class="logo_container">
+							<a href="index.html">FU<span> E-BOOK</span></a>
+						</div>
+						<nav class="navbar">
+							
+							<ul class="navbar_menu">
+								<li><a class="home" href="index.html">HOME</a></li>
+							</ul>
+							<div class="dropdown">
+								<button class="dropbtn">Major</button>
+								<div class="dropdown-content">
+									<a href="#">Software Engineering</a>
+									<a href="#">Graphic Design</a>
+									<a href="#">Business Administration</a>
+								</div>
+							</div>
+							<div class="search-bar">
+								<input type="search" class="form-control rounded" placeholder="Search"
+									aria-label="Search" aria-describedby="search-addon" />
+								<button type="button" class="btn">search</button>
+							</div>
+							<ul class="navbar_user">
+								<div class="dropdown">
+									<img src="~/images/menu.png" alt="">
+									<div class="dropdown-content">
+										<a asp-controller="Account" asp-action="ProfileUser">Account</a>
+											
+											@if(Model.Roles == "Admin"){
+											<a asp-controller="Book"asp-action="Index">Manage Book</a>
+											<a asp-controller="Account" asp-action="Index">Manage User</a>
+											<a asp-controller="Home" asp-action="Logout">Logout</a>
+											}
+											else if(Model.Roles == "Users") {
+											<a href="bookHistory.html">Book History</a>
+											<a asp-controller="Home" asp-action="Logout">Logout</a>
+											}
+											else {
+												<a asp-controller="Home" asp-action="Login">Login</a>
+											}
+											
+									</div>
+								</div>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 	</header>
 
@@ -112,7 +124,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic">
-					<img src="~/images/gigacat.png" alt="IMG">
+					<img src="~/images/default-avatar.png" alt="IMG">
 					<div class="browse">
 						<label for="myfile">Profile picture </label>
 						<input type="file" id="myfile" name="myfile">
@@ -149,15 +161,6 @@
 						<span class="symbol-input100">
 							<i class="fa fa-phone" aria-hidden="true"></i>
 						</span>
-					</div>
-
-
-					<div class="wrap-input100 validate-input">
-						<h5>Gender</h5>
-						<div class="gender">
-							<input type="radio" name="gender" value="male"> Male
-							<input type="radio" name="gender" value="female"> Female
-						</div>
 					</div>
 
 					<div class="container-login100-form-btn">

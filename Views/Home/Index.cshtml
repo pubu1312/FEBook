@@ -99,11 +99,10 @@
 											<a asp-controller="Account" asp-action="ProfileUser">Account</a>
 											
 											@if(Model.userSession != null && Model.userSession.Roles == "Admin"){
-											<a href="manageBook.html">Manage Book</a>
-											<a href="manageUser.html">Manage User</a>
+											<a asp-controller="Book"asp-action="Index">Manage Book</a>
+											<a asp-controller="Account" asp-action="Index">Manage User</a>
 											<a asp-controller="Home" asp-action="Logout">Logout</a>
-											}
-											else if(Model.userSession != null && Model.userSession.Roles == "User") {
+											} else if(Model.userSession != null && Model.userSession.Roles == "User") {
 											<a href="bookHistory.html">Book History</a>
 											<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
