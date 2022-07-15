@@ -1,6 +1,6 @@
 @model Book
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "DetailView";
 }
 <div class="container">
     <h1>Book Details</h1>
@@ -16,9 +16,7 @@
     </div>
     <div class="row">
         <b class="col-6">BookCover</b>
-        <div class="col-6"><td><img src="@Model.BookCover"height="284" width="173" alt=""></td></div>
-  @* <td><img src="@Book.BookCover" height="284" width="173" alt=""></td> *@
-
+        <div class="col-6">@Model.BookCover</div>
     </div>
     <div class="row">
         <b class="col-6">YearOfPublic</b>

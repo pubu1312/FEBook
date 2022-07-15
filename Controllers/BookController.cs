@@ -21,37 +21,35 @@ namespace FEBook.Controllers
 
         public IActionResult Detail(int? id)
         {
-            if (id == null)
-            {
+            if (id == null) {
                 return NotFound();
             }
-            var Book = bookRepository.GetBookByID(id.Value);
-            if (Book == null)
-            {
+            var book = bookRepository.GetBookByID(id.Value);
+            if (book == null) {
                 return NotFound();
             }
-            return View(Book);
+            return View(book);
         }
 
-        public IActionResult Create() => View();
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Book Book)
+        public IActionResult Create(Book book)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    bookRepository.InsertBook(Book);
+                if (ModelState.IsValid) {
+                    bookRepository.InsertBook(book);
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+            } catch (Exception) {
+                //
             }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                return View(Book);
-            }
+            return View(book);
         }
         public IActionResult Edit(int? id)
         {

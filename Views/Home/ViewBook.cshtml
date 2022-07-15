@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "BookView";
 }
+
 <head>
 	<title>Ebook Categories</title>
 	<meta charset="utf-8">
@@ -71,11 +72,11 @@
 								</div>
 								<!-- check session -->
 								<form asp-controller="Books" asp-action="Index">
-								<div class="search-bar grid-container">									
-									<input type="search" class="form-control rounded" name="SearchString" placeholder="Search"
-										aria-label="Search" aria-describedby="search-addon" />
-									<button type="submit" value="Filter" class="btn">Search</button>
-								</div>
+									<div class="search-bar grid-container">
+										<input type="search" class="form-control rounded" name="SearchString"
+											placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+										<button type="submit" value="Filter" class="btn">Search</button>
+									</div>
 								</form>
 								<!-- check admin or user -->
 								<ul class="navbar_user">
@@ -124,10 +125,8 @@
 											<ul>
 												<li>
 													<div class="product_image">
-													
-													
-												</div>
-													</li>
+													</div>
+												</li>
 											</ul>
 										</div>
 									</div>
@@ -219,6 +218,7 @@
 											<div class="tab_title additional_info_title">
 												<h4>Additional Information</h4>
 											</div>
+
 											<p>Originally published:</p><div class="col-6">@Model.YearOfPublic</div>
 											<p>Author:</p> <div class="col-6">@Model.BookAuthors</div>
 										</div>
@@ -366,7 +366,7 @@
 									<ul class="footer_nav">
 										<li><a href="#">Blog</a></li>
 										<li><a href="#">FAQs</a></li>
-										<li><a href="contact.html">Contact us</a></li>
+										<li><a asp-controller="Home" asp-action="Index">Contact us</a></li>
 									</ul>
 								</div>
 							</div>

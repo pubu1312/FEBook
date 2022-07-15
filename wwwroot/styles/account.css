@@ -233,7 +233,7 @@ h5 {
 .wrap-login100 {
   margin-top: 50px;
   width: 960px;
-  height: 1100px;
+  max-height: 100%;
   border: solid grey;
   border-radius: 10px;
   overflow: hidden;
@@ -296,7 +296,7 @@ h5 {
 .wrap-input100 {
   position: relative;
   z-index: 1;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-left: 80px;
 }
 
@@ -450,7 +450,7 @@ h5 {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
   margin-left: 500px;
-  margin-top: -50px;
+  margin-top: 0px;
 }
 
 .login100-form-btn2:hover {

@@ -67,7 +67,7 @@
 					<div class="row">
 						<div class="col-lg-12 text-right">
 							<div class="logo_container">
-								<a href="index.cshtml">FU<span> E-BOOK</span></a>
+								<a href="index.cshtml">F<span>E-BOOK</span></a>
 							</div>
 							<nav class="navbar">
 
@@ -102,17 +102,13 @@
 											<a asp-controller="Book"asp-action="Index">Manage Book</a>
 											<a asp-controller="Account" asp-action="Index">Manage User</a>
 											<a asp-controller="Home" asp-action="Logout">Logout</a>
-											}
-											else if(Model.userSession != null && Model.userSession.Roles == "Users") {
-											<a asp-controller="Book"asp-action="bookHistory"> History</a>
+											} else if(Model.userSession != null && Model.userSession.Roles == "User") {
+											<a href="bookHistory.html">Book History</a>
 											<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
 											else {
 												<a asp-controller="Home" asp-action="Login">Login</a>
 											}
-											
-											
-											
 										</div>
 									</div>
 								</ul>
@@ -200,7 +196,7 @@
 										
 										<!-- Product 1 -->
 
-										<div class="product-item">
+										<div class="product-item"> 
 											<div class="product discount product_filter">
 												<div class="product_image">
 													<img src="@book.BookCover" height="284" width="173" alt="">
@@ -208,12 +204,15 @@
 												</div>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
-													<h6 class="product_name"><a href="viewbook.html">
+													<h6 class="product_name"><a href="ViewBook.cshtml">
 															@book.BookName;
 															</a></h6>
+															
 												</div>
+												<div class="red_button read"> @Html.ActionLink("ViewBook", "ViewBook", new {id =book.BookId})</div>
 											</div>
-											<div class="red_button read">@Html.ActionLink("Read","viewbook",new {id = book.BookId})</div>
+											
+											
 										</div>
 										}
 									</div>
@@ -306,13 +305,13 @@
 	</div>
 
 	<script src="~/js/jquery-3.2.1.min.js"></script>
-	<script src="css/bootstrap4/popper.js"></script>
-	<script src="css/bootstrap4/bootstrap.min.js"></script>
-	<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-	<script src="plugins/easing/easing.js"></script>
-	<script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="/js/categories_custom.js"></script>
+	<script src="~/css/bootstrap4/popper.js"></script>
+	<script src="~/css/bootstrap4/bootstrap.min.js"></script>
+	<script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="~/plugins/easing/easing.js"></script>
+	<script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<script src="~/js/categories_custom.js"></script>
 </body>
 
 </html>
