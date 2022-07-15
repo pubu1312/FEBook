@@ -1,9 +1,9 @@
 USE EbookManagement;
 
 INSERT INTO Account(Username, Roles,Passwords , Fullname , email , phone) VALUES 
-('user1' , 'Admin','12345' , 'Mr A', 'MrA@.gmail.com', 12345678901)  ,
-('user2' , 'Users','12345' , 'Mr B', 'MrB@.gmail.com', 12345678901)  ,
-('user3' , 'Users','12345' , 'Mr C', 'MrC@.gmail.com', 12345678901)  ;
+('user1' , 'Admin','12345' , 'Mr A', 'MrA@gmail.com', 12345678901)  ,
+('user2' , 'Users','12345' , 'Mr B', 'MrB@gmail.com', 12345678901)  ,
+('user3' , 'Users','12345' , 'Mr C', 'MrC@gmail.com', 12345678901)  ;
 INSERT INTO Book(BookName, BookCover, YearOfPublic, Summary , Languages , Content , UpdateDate  ) VALUES 
 ('Clean Code' , 'images/cleancode.png',2008  ,'even bad code can function. But if code isn''t clean, it can bring a development organization to its knees.','English','Clean Codeis divided into three parts. The first describes the principles, patterns, and practices of writing clean code.', '2020-05-14'),
 ('Design Patterns: Elements of Reusable Object-Oriented Software', 'images/designpatterns.png',1994,'Design Patterns is a modern classic in the literature of object-oriented development','English','The book provides numerous examples where using composition rather than inheritance can improve the reusability and flexibility of code.', '2021-06-12'),

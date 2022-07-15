@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.DAO;
@@ -16,11 +17,11 @@ namespace FEBook.Controllers
     public class HomeController : Controller
     {
         AccountDAO accountDAO = new AccountDAO();
-        IBookRepository BookRepository = null;
-        public HomeController() => BookRepository = new BookRepository();
+        IBookRepository bookRepository = null;
+        IAccountRepository accountRepository = null;
+        public HomeController() => bookRepository = new BookRepository();
 
-        public IActionResult Privacy()
-        {
+        public IActionResult Privacy(){
             return View();
         }
 
@@ -31,20 +32,32 @@ namespace FEBook.Controllers
         
         public async Task<ActionResult> Index(string searchString)
         {
-            var BookList = BookRepository.GetBooks();
+            dynamic model = new ExpandoObject();
+            string userEmail = HttpContext.Session.GetString("email");
+            
+             Account acc = null;
+            if(userEmail != null){
+                accountRepository = new AccountRepository();
+                acc = accountRepository.GetAccountByEmail(userEmail);
+
+            }
+
+            var BookList = bookRepository.GetBooks();
+
             var searchBook = from book in BookList select book;
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 searchBook = searchBook.Where(c => c.BookName!.Contains(searchString));
 
             }
-            return View(await Task.FromResult(searchBook.ToList()));
+            model.userSession = acc;
+            model.searchBook = searchBook.Reverse();
+            return View(await Task.FromResult(model));
 
         }
 
-        public IActionResult Login()
-        {
-            
+        public IActionResult Login(){
             return View();
         }
 
@@ -58,14 +71,30 @@ namespace FEBook.Controllers
                     //session here
                     HttpContext.Session.SetString("email", accountDAO.LoginAccount(account.Email, account.Passwords).Email);   
                     if (HttpContext.Session.GetString("email") != null) {
-                        return RedirectToAction("Index", "Major");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
             } catch (Exception) {
 
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
+      public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult Register(){
+            return View();
+        }
+
+        public IActionResult ForgotPass(){
+            return View();
+        }
+        
         public ActionResult ViewBook(int? id)
         {
             if (id == null)

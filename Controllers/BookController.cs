@@ -1,27 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using FEBook.Models;
 using FEBook.DataAccess.Repository;
+using FEBook.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace EbookProject.Controllers
+namespace FEBook.Controllers
 {
-    public class BooksController : Controller
+    public class BookController : Controller
     {
         IBookRepository bookRepository = null;
-        public BooksController() => bookRepository = new BookRepository();
-        
-        public IActionResult Index() {
+        public BookController() => bookRepository = new BookRepository();
+        public IActionResult Index()
+        {
             var bookList = bookRepository.GetBooks();
             return View(bookList);
+
         }
-        
-        public IActionResult DetailView(int? id)
+
+        public IActionResult Detail(int? id)
         {
             if (id == null) {
                 return NotFound();
@@ -53,8 +51,6 @@ namespace EbookProject.Controllers
             }
             return View(book);
         }
-
-        
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -68,6 +64,7 @@ namespace EbookProject.Controllers
             }
             return View(Book);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Book Book)
@@ -103,6 +100,8 @@ namespace EbookProject.Controllers
             }
             return View(Book);
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
@@ -118,6 +117,5 @@ namespace EbookProject.Controllers
                 return View();
             }
         }
-
     }
 }

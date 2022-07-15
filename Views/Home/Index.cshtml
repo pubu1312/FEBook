@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-@model IEnumerable<Book>
+@model dynamic
+
 
 @{
     ViewData["Title"] = "Home Page";
@@ -41,7 +42,16 @@
 							<div class="top_nav_right">
 								<ul class="top_nav_menu">
 									<li class="account">
-										<a asp-action="Login">Sign-in</a>
+										@if (Model.userSession !=null)
+                        			  {
+                                		<a type="text" name="username" asp-for="@Model.userSession.UserName" style="color:White" asp-controller="Account"asp-action="ProfileUser">@Model.userSession.UserName</a>
+
+                          			 }
+                         				 else
+                         			 {
+                           				 <a asp-action="Login">Sign-in</a> 
+                            			 
+                          			 }
 									</li>
 								</ul>
 							</div>
@@ -57,12 +67,12 @@
 					<div class="row">
 						<div class="col-lg-12 text-right">
 							<div class="logo_container">
-								<a href="index.html">FU<span> E-BOOK</span></a>
+								<a href="index.cshtml">FU<span> E-BOOK</span></a>
 							</div>
 							<nav class="navbar">
 
 								<ul class="navbar_menu">
-									<li><a class="home" href="index.html">HOME</a></li>
+									<li><a class="home"  asp-controller="Home" asp-action="Index">HOME</a></li>
 								</ul>
 								<!-- select * from Major -->
 								<div class="dropdown">
@@ -74,7 +84,7 @@
 									</div>
 								</div>
 								<!-- check session -->
-								<form asp-controller="Books" asp-action="Index">
+								<form asp-controller="Home" asp-action="Index">
 								<div class="search-bar grid-container">									
 									<input type="search" class="form-control rounded" name="SearchString" placeholder="Search"
 										aria-label="Search" aria-describedby="search-addon" />
@@ -86,11 +96,23 @@
 									<div class="dropdown">
 										<img src="images/menu.png" alt="">
 										<div class="dropdown-content">
-											<a href="account.html">Account</a>
+											<a asp-controller="Account" asp-action="ProfileUser">Account</a>
+											
+											@if(Model.userSession != null && Model.userSession.Roles == "Admin"){
 											<a href="manageBook.html">Manage Book</a>
 											<a href="manageUser.html">Manage User</a>
+											<a asp-controller="Home" asp-action="Logout">Logout</a>
+											}
+											else if(Model.userSession != null && Model.userSession.Roles == "Users") {
 											<a href="bookHistory.html">Book History</a>
-											<a href="login.html">Logout</a>
+											<a asp-controller="Home" asp-action="Logout">Logout</a>
+											}
+											else {
+												<a asp-controller="Home" asp-action="Login">Login</a>
+											}
+											
+											
+											
 										</div>
 									</div>
 								</ul>
@@ -172,7 +194,7 @@
 									<!-- Product Grid -->
 
 									<div class="product-grid">
-										@foreach (var book in Model.Reverse())
+										@foreach (var book in Model.searchBook)
 										{
 											
 										
@@ -256,7 +278,7 @@
 							<ul class="footer_nav">
 								<li><a href="#">Blog</a></li>
 								<li><a href="#">FAQs</a></li>
-								<li><a href="contact.html">Contact us</a></li>
+								<li><a  asp-controller="Home" asp-action="Index">Contact us</a></li>
 							</ul>
 						</div>
 					</div>
