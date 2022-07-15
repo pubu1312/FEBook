@@ -56,47 +56,46 @@
 			<!-- Main Navigation -->
 
 			<div class="main_nav_container">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 text-right">
-							<div class="logo_container">
-								<a href="index.html">F<span>E-BOOK</span></a>
-							</div>
-							<nav class="navbar">
-
-								<ul class="navbar_menu">
-									<li><a class="home" href="index.html">HOME</a></li>
-								</ul>
-								<div class="dropdown">
-									<button class="dropbtn">Major</button>
-									<div class="dropdown-content">
-										<a href="#">Software Engineering</a>
-										<a href="#">Graphic Design</a>
-										<a href="#">Business Administration</a>
-									</div>
-								</div>
-								<div class="search-bar">
-									<input type="search" class="form-control rounded" placeholder="Search"
-										aria-label="Search" aria-describedby="search-addon" />
-									<button type="button" class="btn">search</button>
-								</div>
-								<ul class="navbar_user">
-									<div class="dropdown">
-										<img src="~/images/menu.png" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <div class="logo_container">
+                                <a asp-controller="Home" asp-action="Index">F<span>E-Book</span></a>
+                            </div>
+                            <nav class="navbar">
+                                <div>
+                                    <a class="home" asp-controller="Home" asp-action="Index">HOME</a>
+                                    <div class="dropdown">
+                                        <button class="dropbtn">Major</button>
                                         <div class="dropdown-content">
-                                            <a asp-controller="Account" asp-action="Index">Account</a>
-                                            <a asp-controller="Book" asp-action="Index">Manage Book</a>
-                                            <a asp-controller="Account" asp-action="Index">Manage User</a>
-                                            <a asp-controller="Home" asp-action="Index">Book History</a>
+                                            <a href="#">Software Engineering</a>
+                                            <a href="#">Graphic Design</a>
+                                            <a href="#">Business Administration</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-bar">
+                                    <input type="search" class="form-control rounded" placeholder="Search"
+                                        aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="button" class="btn">search</button>
+                                </div>
+                                <ul class="navbar_user">
+                                    <div class="menu">
+                                        <img src="~/images/menu.png" alt="">
+                                        <div class="dropdown-content">
+                                            <a asp-controller="Subject" asp-action="Index">Subject</a>
+                                            <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
+                                            <a asp-controller="Subject" asp-action="Index">Manage User</a>
+                                            <a asp-controller="Home" asp-action="Index">Subject History</a>
                                             <a asp-controller="Home" asp-action="Login">Logout</a>
                                         </div>
-									</div>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
+                                    </div>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 		</header>
 
