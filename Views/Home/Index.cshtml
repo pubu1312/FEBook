@@ -208,12 +208,15 @@
 												</div>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
-													<h6 class="product_name"><a href="viewbook.html">
+													<h6 class="product_name"><a href="ViewBook.cshtml">
 															@book.BookName;
 															</a></h6>
+															
 												</div>
+												<div class="red_button read"> @Html.ActionLink("ViewBook", "ViewBook", new {id =book.BookId})</div>
 											</div>
-											<div class="red_button read">@Html.ActionLink("Read","viewbook",new {id = book.BookId})</div>
+											
+											
 										</div>
 										}
 									</div>

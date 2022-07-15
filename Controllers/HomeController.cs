@@ -43,6 +43,7 @@ namespace FEBook.Controllers
             }
 
             var BookList = bookRepository.GetBooks();
+
             var searchBook = from book in BookList select book;
             
             if (!String.IsNullOrEmpty(searchString))
@@ -93,7 +94,20 @@ namespace FEBook.Controllers
         public IActionResult ForgotPass(){
             return View();
         }
-
+        
+        public ActionResult ViewBook(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var Book = BookRepository.GetBookByID(id.Value);
+            if (Book == null)
+            {
+                return NotFound();
+            }
+            return View(Book);
+        }
         
         
     }
