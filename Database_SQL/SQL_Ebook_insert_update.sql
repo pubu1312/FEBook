@@ -9,6 +9,7 @@ INSERT INTO Account(Username, Roles,Passwords , Fullname , email , phone) VALUES
 ('JimmiBuh' , 'User','123456' , 'Mr Jimmi', 'JimmiBuh@gmail.com', 1678901)  ,
 ('NghiBuh' , 'User','123456' , 'Mr Nghi', 'MrNghi@gmail.com', 123456789), 
 ('XThanh' , 'User','123456' , 'Mr Thanh', 'MrThanh@gmail.com', 12345678910) ;
+
 INSERT INTO Book(BookName, BookCover, YearOfPublic, Summary , Languages , Content , UpdateDate  ) VALUES 
 ('Clean Code' , 'images/cleancode.png',2008  ,'even bad code can function. But if code isn''t clean, it can bring a development organization to its knees.','English','Clean Codeis divided into three parts. The first describes the principles, patterns, and practices of writing clean code.', '2020-05-14'),
 ('Design Patterns: Elements of Reusable Object-Oriented Software', 'images/designpatterns.png',1994,'Design Patterns is a modern classic in the literature of object-oriented development','English','The book provides numerous examples where using composition rather than inheritance can improve the reusability and flexibility of code.', '2021-06-12'),

@@ -1,17 +1,17 @@
 @model Author
 @{
-    ViewData["Title"] = "Create";
+	ViewData["Title"] = "Create";
 }
 
 @* <h1 class="row">Create new Author</h1><br/>
-<div class = "row">
+	<div class = "row">
 
-    <form method="POST" asp-action="Create">
-        AuthorName<input asp-for="AuthorName" class="form-control">
-        Profiles<input asp-for="Profiles" class="form-control">
-        <input type="submit" value="Create" class="btn btn-primary">
-    </form>
-</div> *@
+	<form method="POST" asp-action="Create">
+	AuthorName<input asp-for="AuthorName" class="form-control">
+	Profiles<input asp-for="Profiles" class="form-control">
+	<input type="submit" value="Create" class="btn btn-primary">
+	</form>
+	</div> *@
 
 <head>
 	<title>Author</title>
@@ -93,13 +93,13 @@
 								<ul class="navbar_user">
 									<div class="dropdown">
 										<img src="~/images/menu.png" alt="">
-                                        <div class="dropdown-content">
-                                            <a asp-controller="Author" asp-action="Index">Author</a>
-                                            <a asp-controller="Book" asp-action="Index">Manage Book</a>
-                                            <a asp-controller="Account" asp-action="Index">Manage User</a>
-                                            <a asp-controller="Home" asp-action="Index">Book History</a>
-                                            <a asp-controller="Home" asp-action="Login">Logout</a>
-                                        </div>
+										<div class="dropdown-content">
+											<a asp-controller="Author" asp-action="Index">Author</a>
+											<a asp-controller="Book" asp-action="Index">Manage Book</a>
+											<a asp-controller="Account" asp-action="Index">Manage User</a>
+											<a asp-controller="Home" asp-action="Index">Book History</a>
+											<a asp-controller="Home" asp-action="Login">Logout</a>
+										</div>
 									</div>
 								</ul>
 							</nav>
@@ -137,20 +137,54 @@
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
-				
+
 
 					<div class="container-login100-form-btn">
 						<input type="submit" value="Create" button class="login100-form-btn">
-							</button>
+						</button>
 					</div>
 					<br>
 				</form>
-					<a asp-action="Index"><button class="login100-form-btn2" style="margin-bottom:100%">Back</button></a>
+				<a asp-action="Index"><button class="login100-form-btn2" style="margin-bottom:100%">Back</button></a>
 			</div>
 		</div>
 	</div>
 
-	
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div
+						class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+						<ul class="footer_nav">
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">FAQs</a></li>
+							<li><a asp-controller="Home" asp-action="Index">Contact us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div
+						class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="footer_nav_container">
+						<div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 
 
