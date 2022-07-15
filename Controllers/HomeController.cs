@@ -93,7 +93,24 @@ namespace FEBook.Controllers
         public IActionResult ForgotPass(){
             return View();
         }
+<<<<<<< Updated upstream
 
+=======
+        
+        // public IActionResult ViewBook(int? id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return NotFound();
+        //     }
+             //var Book = BookRepository.GetBookByID(id.Value);
+        //     if (Book == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return View(Book);
+        // }
+>>>>>>> Stashed changes
         
         
     }

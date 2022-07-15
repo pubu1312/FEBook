@@ -19,7 +19,7 @@ INSERT INTO Subjects(SubName ) VALUES ('Education') , ('Theory') , ('other') ;
 INSERT INTO ManageBook(UpdateDate) VALUES 
 ('2019-07-19'),('2022-05-08') ,('2019-11-15')  ;
 
-Insert into ReadingHistory(DateRead) Values ('20220608 10:34:09 AM') ; 
+Insert into ReadingHistory(DateRead , UserID , BookID , DeleteStatus) Values ('20220608 10:34:09 AM',1,1,0) ; 
 
 INSERT INTO Major(MajorName) VALUES 
 ('Computer science') , ('Mathematics') , ('other') ;  
