@@ -101,7 +101,7 @@ namespace FEBook.Controllers
             {
                 return NotFound();
             }
-            var Book = BookRepository.GetBookByID(id.Value);
+            var Book = bookRepository.GetBookByID(id.Value);
             if (Book == null)
             {
                 return NotFound();
