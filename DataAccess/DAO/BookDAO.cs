@@ -60,12 +60,13 @@ namespace FEBook.DataAccess.DAO
             throw new Exception(ex.Message);
         }
      }
-     public void Update(Book Book){
+     public void Update(Book book){
         try{
-             Book _Book = GetBookByID(Book.BookId);
+            Book _Book = GetBookByID(book.BookId);
             if(_Book != null){
+                System.Console.WriteLine("toi day r");
                 using var context = new EbookManagementContext();
-                context.Books.Update(Book);
+                context.Books.Update(book);
                 context.SaveChanges();
             }
             else {

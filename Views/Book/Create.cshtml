@@ -6,9 +6,9 @@
 <h1 class="row">Create new Book</h1><br/>
 <div class = "row">
 
-    <form method="POST" asp-action="Create">
+    <form enctype="multipart/form-data" method="POST" asp-action="Create">
         BookName<input asp-for="BookName" class="form-control">
-        BookCover<input asp-for="BookCover" class="form-control">
+        BookCover<input asp-for="BookCover" name="bookCover" type="file" accept="images/*" class="form-control">
         YearOfPublic<input asp-for="YearOfPublic" class="form-control">
         Summary<input asp-for="Summary" class="form-control">
         Languages<input asp-for="Languages" class="form-control">
