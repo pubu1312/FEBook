@@ -78,32 +78,11 @@ namespace FEBook.Controllers
         {
             if (id == null) return NotFound();
             Account account = accountRepository.GetAccountByID(Convert.ToInt32(id));
+            accountRepository.DeleteAccount(account.UserId);
             if (account == null) return NotFound();
-            return View(account);
+            return RedirectToAction(nameof(Index));
         }
 
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(Account account)
-        {
-            try
-            {
-                var _account = accountRepository.GetAccountByID(Convert.ToInt32(account.UserId));
-                if (_account == null) return NotFound();
-                if (ModelState.IsValid)
-                {
-                    accountRepository.DeleteAccount(account.UserId);
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-            return View(account);
-        }   
         public IActionResult ProfileUser(Account account)
         {
              if (HttpContext.Session.GetString("email") != null) {
@@ -116,6 +95,7 @@ namespace FEBook.Controllers
                 return RedirectToAction("Index","Home");
             }
         }
+        
     }
 }
 
