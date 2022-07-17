@@ -47,9 +47,12 @@ namespace FEBook.DataAccess.DAO
     public void AddNew(Book Book){  
         try{
             Book _Book = GetBookByID(Book.BookId);
+            //System.Console.WriteLine("Hello im in add new");
             if(_Book == null){
                 using var context = new EbookManagementContext();
+                System.Console.WriteLine("This book is not existed");
                 context.Books.Add(Book);
+                System.Console.WriteLine("Add completed!");
                 context.SaveChanges();
             }
             else {
