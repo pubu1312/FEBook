@@ -8,11 +8,11 @@
 
     <form enctype="multipart/form-data" method="POST" asp-action="Create">
         BookName<input asp-for="BookName" class="form-control">
-        BookCover<input asp-for="BookCover" name="bookCover" type="file" accept="images/*" class="form-control">
+        BookCover<input asp-for="BookCover" name="bookCover" type="file" class="form-control">
         YearOfPublic<input asp-for="YearOfPublic" class="form-control">
         Summary<input asp-for="Summary" class="form-control">
         Languages<input asp-for="Languages" class="form-control">
-        Content<input asp-for="Content" class="form-control">
+        Content<input asp-for="Content" name="bookContent" type="file" class="form-control">
         UpdateDate<input asp-for="UpdateDate" type ="date" class="form-control">
         <input type="submit" value="Create" class="btn btn-primary">
         

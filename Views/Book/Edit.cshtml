@@ -106,15 +106,15 @@
                                 <form method="POST" asp-action="Edit" enctype="multipart/form-data">
                                     <input asp-for="BookId" name="bookId" type="text" hidden>
                                     BookName<input asp-for="BookName" name="bookName" type="text" class="form-control">
-                                    BookCover<input name="bookCover" type="file" accpect="images/*" class="form-control">
+                                    BookCover<input name="bookCover" type="file" class="form-control">
                                     YearOfPublic<input asp-for="YearOfPublic" name="yearOfPublic" type="text" class="form-control">
                                     Summary<input asp-for="Summary" name="summary"class="form-control">
                                     Languages<input asp-for="Languages" name="languages" type="text" class="form-control">
-                                    Content<input asp-for="Content" name="content" type="text" class="form-control">
+                                    Content<input asp-for="Content" name="bookContent" type="file" class="form-control">
                                     UpdateDate<input asp-for="UpdateDate" name="updateDate" type="date" class="form-control">
                                     <div style="margin-top:2%;margin-left:45%;margin-right:0%">
                                         <a asp-action="Edit"><button class="btn btn-success">Edit</button></a>
-                                        <a asp-action="Index"><button class="btn btn-back"
+                                        <a asp-action="Index" asp-controller="Book"><button class="btn btn-back"
                                                 style="background-color:blue;color:white">Back</button></a>
                                     </div>
                                 </form>
