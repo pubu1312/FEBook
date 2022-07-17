@@ -38,7 +38,7 @@ namespace FEBook
 
             /* xai session o day nhe */
             services.AddSession(options => {
-                    options.IdleTimeout = TimeSpan.FromMinutes(5);
+                    options.IdleTimeout = TimeSpan.FromMinutes(30);
                     options.Cookie.HttpOnly = true;
                     options.Cookie.IsEssential = true;
                 });
