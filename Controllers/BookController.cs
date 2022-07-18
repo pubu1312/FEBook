@@ -115,20 +115,13 @@ namespace FEBook.Controllers
                 {
                     string dirPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/BookCovers/");
                     string bookCoverSource = UploadedFile(bookCover);
-
-
                     book.BookCover = bookCoverSource;
-
                     string dirPath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdf/");
                     var bookContentPath = Path.Combine(dirPath2, bookContent.FileName);
-
                     using var fileStream2 = new FileStream(bookContentPath, FileMode.Create);
                     bookContent.CopyTo(fileStream2);
-
                     string bookContentSrc = String.Format("pdf/{0}", bookContent.FileName);
                     book.Content = bookContentSrc;
-                    
-                    
                     bookRepository.UpdateBook(book);
                 }
 
@@ -159,7 +152,6 @@ namespace FEBook.Controllers
                 file.CopyTo(fileStream);
 
                 imgSrc = String.Format("images/BookCovers/{0}", file.FileName);
-                System.Console.WriteLine("Src: " + imgSrc);
             }
             return imgSrc;
         }

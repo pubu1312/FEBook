@@ -1,12 +1,11 @@
 @model Account
 <!DOCTYPE html>
 <html lang="en">
-    @{
-    ViewData["Title"] = "ProfileUser";
+@{
+	ViewData["Title"] = "Your Profile";
 }
 
 <head>
-	<title>Account</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -38,39 +37,23 @@
 
 <body>
 	<div class="super_container">
-	<!-- Header -->
+		<!-- Header -->
 
-	<header class="header trans_300">
+		<header class="header trans_300">
 
-		<!-- Top Navigation -->
+			<!-- Main Navigation -->
 
-		<div class="top_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="top_nav_left"></div>
-					</div>
-					<div class="col-md-6 text-right">
-						<div class="top_nav_right">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Main Navigation -->
-
-		<div class="main_nav_container">
+			<div class="main_nav_container">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-right">
 						<div class="logo_container">
-							<a href="index.html">FU<span> E-BOOK</span></a>
+							<a>F<span>E-BOOK</span></a>
 						</div>
 						<nav class="navbar">
 							
 							<ul class="navbar_menu">
-								<li><a class="home" href="index.html">HOME</a></li>
+								<li><a class="home" asp-controller="Home" asp-action="Index">HOME</a></li>
 							</ul>
 							<div class="dropdown">
 								<button class="dropbtn">Major</button>
@@ -79,44 +62,46 @@
 									<a href="#">Graphic Design</a>
 									<a href="#">Business Administration</a>
 								</div>
-							</div>
-							<div class="search-bar">
-								<input type="search" class="form-control rounded" placeholder="Search"
-									aria-label="Search" aria-describedby="search-addon" />
-								<button type="button" class="btn">search</button>
-							</div>
-							<ul class="navbar_user">
-								<div class="dropdown">
-									<img src="~/images/menu.png" alt="">
-									<div class="dropdown-content">
-										<a asp-controller="Account" asp-action="ProfileUser">Account</a>
-											
-											@if(Model.Roles == "Admin"){
-											<a asp-controller="Book"asp-action="Index">Manage Book</a>
-											<a asp-controller="Account" asp-action="Index">Manage User</a>
-											<a asp-controller="Home" asp-action="Logout">Logout</a>
+								</div>
+								<div class="search-bar">
+									<input type="search" class="form-control rounded" placeholder="Search"
+										aria-label="Search" aria-describedby="search-addon" />
+									<button type="button" class="btn">search</button>
+								</div>
+								<ul class="navbar_user">
+									<div class="dropdown">
+										<img src="~/images/menu.png" alt="">
+										<div class="dropdown-content">
+											<a asp-controller="Account" asp-action="ProfileUser">Account</a>
+											@if (Model.Roles == "Admin")
+											{
+												<a asp-controller="Book" asp-action="Index">Manage Book</a>
+												<a asp-controller="Account" asp-action="Index">Manage User</a>
+												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
-											else if(Model.Roles == "Users") {
-											<a href="bookHistory.html">Book History</a>
-											<a asp-controller="Home" asp-action="Logout">Logout</a>
+											else if (Model.Roles == "Users")
+											{
+												<a asp-controller="Book" asp-action="BookHistory">Book History</a>
+												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
-											else {
+											else
+											{
 												<a asp-controller="Home" asp-action="Login">Login</a>
 											}
-											
+
+										</div>
 									</div>
-								</div>
-							</ul>
-						</nav>
+								</ul>
+							</nav>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
 
-	</header>
+		</header>
 
-	<div class="fs_menu_overlay"></div>
+		<div class="fs_menu_overlay"></div>
 
 	</div>
 	<!-- Account form -->
@@ -126,8 +111,8 @@
 				<div class="login100-pic">
 					<img src="~/images/default-avatar.png" alt="IMG">
 					<div class="browse">
-						<label for="myfile">Profile picture </label>
-						<input type="file" id="myfile" name="myfile">
+						<label for="myfile"></label>
+						<span>You can not change the avatar :></span>
 					</div>
 				</div>
 
@@ -211,7 +196,7 @@
 		</div>
 	</footer>
 
-</div>
+	</div>
 
 
 
