@@ -11,9 +11,9 @@ INSERT INTO Account(Username, Roles,Passwords , Fullname , email , phone) VALUES
 ('XThanh' , 'User','123456' , 'Mr Thanh', 'MrThanh@gmail.com', 12345678910) ;
 
 INSERT INTO Book(BookName, BookCover, YearOfPublic, Summary , Languages , Content , UpdateDate  ) VALUES 
-('Clean Code' , 'images/cleancode.png',2008  ,'even bad code can function. But if code isn''t clean, it can bring a development organization to its knees.','English','Clean Codeis divided into three parts. The first describes the principles, patterns, and practices of writing clean code.', '2020-05-14'),
-('Design Patterns: Elements of Reusable Object-Oriented Software', 'images/designpatterns.png',1994,'Design Patterns is a modern classic in the literature of object-oriented development','English','The book provides numerous examples where using composition rather than inheritance can improve the reusability and flexibility of code.', '2021-06-12'),
-('The Pragmatic Programmer Your Journey To Mastery, 20th Anniversary Edition', 'images/thepragmaticprogrammer.png',2019,'To participate in the next generation of professional product delivery you have to be pragmatic but disciplined. ' , 'English', 'The Pragmatic Programmer filled with practical advice, both technical and professional, that will serve you and your projects well for years to come.', '2019-07-19')  ;
+('Clean Code' , 'images/BookCovers/cleancode.png', 2008  ,'even bad code can function. But if code isn''t clean, it can bring a development organization to its knees.','English','/pdf/se.pdf', '2020-05-14'),
+('Design Patterns: Elements of Reusable Object-Oriented Software', 'images/BookCovers/designpatterns.png',1994,'Design Patterns is a modern classic in the literature of object-oriented development','English','/pdf/se.pdf', '2021-06-12'),
+('The Pragmatic Programmer Your Journey To Mastery, 20th Anniversary Edition', 'images/BookCovers/thepragmaticprogrammer.png',2019,'To participate in the next generation of professional product delivery you have to be pragmatic but disciplined.' , 'English', '/pdf/se.pdf', '2019-07-19')  ;
 
 INSERT INTO Author(AuthorName , Profiles) VALUES 
 ('Robert C.Martin','founder and president of Object Mentor, Inc., a team of experienced consultants who mentor their clients worldwide in the fields of C++, Java, C#, Ruby, OO, Design Patterns, UML, Agile Methodologies, and eXtreme programming.'),

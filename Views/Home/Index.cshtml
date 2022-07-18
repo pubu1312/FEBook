@@ -153,7 +153,7 @@
 									<div class="product_sorting_container product_sorting_container_top">
 										<ul class="product_sorting">
 											<li>
-												<span class="type_sorting_text">Default Sorting</span>
+												<span class="type_sorting_text">Updated Day</span>
 												<i class="fa fa-angle-down"></i>
 												<ul class="sorting_type">
 													<li class="type_sorting_btn"
@@ -161,11 +161,7 @@
 														<span>Default Sorting</span>
 													</li>
 													<li class="type_sorting_btn"
-														data-isotope-option='{ "sortBy": "price" }'><span>Price</span>
-													</li>
-													<li class="type_sorting_btn"
-														data-isotope-option='{ "sortBy": "name" }'><span>Product
-															Name</span></li>
+														data-isotope-option='{ "sortBy": "name" }'><span>Name</span></li>
 												</ul>
 											</li>
 										</ul>
@@ -190,27 +186,17 @@
 									<div class="product-grid">
 										@foreach (var book in Model.searchBook)
 										{
-											
-										
-										<!-- Product 1 -->
-
 										<div class="product-item"> 
 											<div class="product discount product_filter">
 												<div class="product_image">
 													<img src="@book.BookCover" height="284" width="173" alt="">
-													
 												</div>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
-													<h6 class="product_name"><a href="ViewBook.cshtml">
-															@book.BookName;
-															</a></h6>
-															
+													<h6 class="product_name">@book.BookName</h6>
 												</div>
 												<div class="red_button read"> @Html.ActionLink("ViewBook", "ViewBook", new {id =book.BookId})</div>
 											</div>
-											
-											
 										</div>
 										}
 									</div>
