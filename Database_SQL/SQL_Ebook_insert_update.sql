@@ -49,6 +49,3 @@ INSERT INTO Major(MajorName) VALUES
 
 INSERT INTO BookRating(Daterating ,NoOfRate ,CmtContent) VALUES 
 ('2019-01-12', 42 , 'some thing funny'),('2021-08-05' , 11 , 'ya ya') ,('2019-11-15',12 ,'blah blah')  ;
-
-
-Select * from book ; 

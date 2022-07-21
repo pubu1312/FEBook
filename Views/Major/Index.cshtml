@@ -59,15 +59,15 @@
                             <nav class="navbar">
                                 <div>
                                     <a class="home" asp-controller="Home" asp-action="Index">HOME</a>
-                                    
+
                                 </div>
                                 <form asp-controller="Home" asp-action="Index">
-									<div class="search-bar grid-container">
-										<input type="search" class="form-control rounded" name="SearchString"
-											placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-										<button type="submit" value="Filter" class="btn">Search</button>
-									</div>
-								</form>
+                                    <div class="search-bar grid-container">
+                                        <input type="search" class="form-control rounded" name="SearchString"
+                                            placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                        <button type="submit" value="Filter" class="btn">Search</button>
+                                    </div>
+                                </form>
                                 <ul class="navbar_user">
                                     <div class="menu">
                                         <img src="~/images/menu.png" alt="">
@@ -138,10 +138,8 @@
                                         }
                                     </tbody>
                             </table>
-
-                             <div class="container">
-                            </div>
-
+                        </div>
+                        <div class="container">
                             <div class="table-title">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -166,7 +164,8 @@
                                             <td>
                                                 <a class="fa fa-undo fa-2x" aria-hidden="true" asp-controller="Major"
                                                 asp-action="Restore" asp-route-Id="@obj.MajorId"></a>
-                                                <a data-confirm="This will be deleted out of database, are you sure?" style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true"
+                                                <a data-confirm="This will be deleted out of database, are you sure?"
+                                                style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true"
                                                 asp-controller="Major" asp-action="Delete"
                                                 asp-route-Id="@obj.MajorId"></a>
                                             </td>

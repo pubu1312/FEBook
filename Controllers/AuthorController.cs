@@ -1,24 +1,50 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FEBook.DataAccess.DAO;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FEBook.Controllers
 {
     public class AuthorController : Controller
     {
+        AccountRepository accountRepository = new AccountRepository();
         AuthorDAO authorDAO = new AuthorDAO();
         IAuthorRepository authorRepository = null;
         public AuthorController() => authorRepository = new AuthorRepository();
 
         //GET: Index
         public IActionResult Index() {
-            var authorList = authorRepository.GetAuthors();
-            return View(authorList);
+            dynamic model = new ExpandoObject();
+            string userEmail = HttpContext.Session.GetString("email");
+
+            Account acc = null;
+            if (userEmail != null)
+            {
+                accountRepository = new AccountRepository();
+                acc = accountRepository.GetAccountByEmail(userEmail);
+                if (acc.Roles == "Admin")
+                {
+                    model.userEmail = HttpContext.Session.GetString("email");
+                    model.AuthorList = new List<Author>();
+                    model.AuthorList = authorDAO.GetAuthorList();
+
+                    model.AuthorDeletedList = new List<Author>();
+                    model.AuthorDeletedList = authorDAO.GetAuthorDeletedList();
+
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View();
         }
 
         public IActionResult Detail(int? id)
