@@ -20,7 +20,11 @@ namespace FEBook.Controllers
         AccountDAO accountDAO = new AccountDAO();
         IBookRepository bookRepository = null;
         IAccountRepository accountRepository = null;
-        public HomeController() => bookRepository = new BookRepository();
+        BookDAO bookDAO = new BookDAO();
+        public HomeController()
+        {
+            bookRepository = new BookRepository();
+        }
 
         public IActionResult Privacy()
         {
@@ -48,7 +52,7 @@ namespace FEBook.Controllers
             var BookList = bookRepository.GetBooks();
 
             var searchBook = from book in BookList select book;
-            model.searchrs = "good";
+
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -105,6 +109,7 @@ namespace FEBook.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Register(Account account)
@@ -115,9 +120,12 @@ namespace FEBook.Controllers
                 if (ModelState.IsValid)
                 {
                     //session here
-                    if (_acc.Email == account.Email){
+                    if (_acc.Email == account.Email)
+                    {
                         ViewBag.Message = "This email is already in use! Please sign in";
-                    } else {
+                    }
+                    else
+                    {
                         accountDAO.RegisterAccount(account.UserName, account.Email, account.Passwords);
                     }
                     return RedirectToAction("Login", "Home");
@@ -150,30 +158,40 @@ namespace FEBook.Controllers
             {
                 System.Console.WriteLine(ex.Message);
             }
-            return RedirectToAction("Register", "Home");
+            return View();
         }
 
-        public ActionResult ViewBook(int? id)
+         public ActionResult ViewBook(int? id)
         {
             dynamic model = new ExpandoObject();
             string userEmail = HttpContext.Session.GetString("email");
-
+            var Book = bookRepository.GetBookByID(id.Value);
             Account acc = null;
             if (userEmail != null)
             {
                 accountRepository = new AccountRepository();
                 acc = accountRepository.GetAccountByEmail(userEmail);
             }
+            else{
+                 model.userSession = acc;
+                 model.book = Book;
+            ViewBag.title = Book.BookName;
+            return View(model);
 
+            }
             if (id == null)
             {
                 return NotFound();
             }
-            var Book = bookRepository.GetBookByID(id.Value);
+           
             if (Book == null)
             {
                 return NotFound();
             }
+            AccountDAO accountdao = new AccountDAO();
+            Account account = accountdao.GetAccountByEmail(HttpContext.Session.GetString("email"));
+            HistoryController hc = new HistoryController();
+            hc.AddHistory(account.UserId,Book.BookId);
             model.userSession = acc;
             model.book = Book;
             ViewBag.title = Book.BookName;
@@ -181,7 +199,7 @@ namespace FEBook.Controllers
         }
 
         [HttpGet]
-        public ActionResult DownloadBook(int? id)
+        public IActionResult DownloadBook(int? id)
         {
             if (id == null)
             {
@@ -197,7 +215,6 @@ namespace FEBook.Controllers
             Response.Headers.Add("Content-Disposition", "inline; filename=" + Book.Content);
             return File(filePath, "application/pdf");
         }
-
 
     }
 }

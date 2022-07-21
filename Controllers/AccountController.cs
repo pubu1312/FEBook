@@ -14,6 +14,7 @@ namespace FEBook.Controllers
 {
     public class AccountController : Controller
     {
+        AccountDAO accountDAO = new AccountDAO();
         IAccountRepository accountRepository = null;
         public AccountController() => accountRepository = new AccountRepository();
 
@@ -92,6 +93,25 @@ namespace FEBook.Controllers
         {
             if (id == null) return NotFound();
             accountRepository.DeleteAccount(id.Value);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult DeleteOnce(int? id)
+        {
+            if (id == null) return NotFound();
+            else
+            {
+                accountDAO.DeleteOnce(Convert.ToInt32(id));
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Restore(int? id)
+        {
+            if (id == null) return NotFound();
+            else
+            {
+                accountDAO.Restore(Convert.ToInt32(id));
+            }
             return RedirectToAction(nameof(Index));
         }
 

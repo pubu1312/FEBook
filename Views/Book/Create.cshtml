@@ -27,19 +27,6 @@
 
         <!-- Top Navigation -->
 
-        <div class="top_nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="top_nav_left"></div>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <div class="top_nav_right">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Main Navigation -->
 
@@ -53,30 +40,25 @@
                         <nav class="navbar">
                             <div>
                                 <a class="home" asp-controller="Home" asp-action="Index">HOME</a>
-                                <div class="dropdown">
-                                    <button class="dropbtn">Major</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">Software Engineering</a>
-                                        <a href="#">Graphic Design</a>
-                                        <a href="#">Business Administration</a>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="search-bar">
-                                <input type="search" class="form-control rounded" placeholder="Search"
-                                    aria-label="Search" aria-describedby="search-addon" />
-                                <button type="button" class="btn">search</button>
-                            </div>
+                            <form asp-controller="Home" asp-action="Index">
+									<div class="search-bar grid-container">
+										<input type="search" class="form-control rounded" name="SearchString"
+											placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+										<button type="submit" value="Filter" class="btn">Search</button>
+									</div>
+								</form>
                             <ul class="navbar_user">
                                 <div class="menu">
                                     <img src="~/images/menu.png" alt="">
                                     <div class="dropdown-content">
-                                        <a asp-controller="Book" asp-action="Index">Manage Book</a>
-                                        <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
-                                        <a asp-controller="Account" asp-action="Index">Manage User</a>
-                                        <a asp-controller="Major" asp-action="Index">Manage Major</a>
-                                        <a asp-controller="Author" asp-action="Index">Manage Author</a>
-                                        <a asp-controller="Home" asp-action="Login">Logout</a>
+                                        <a asp-controller="Account" asp-action="ProfileUser">Profile</a>
+                                            <a asp-controller="Book" asp-action="Index">Manage Book</a>
+                                            <a asp-controller="Account" asp-action="Index">Manage User</a>
+                                            <a asp-controller="Major" asp-action="Index">Manage Major</a>
+                                            <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
+                                            <a asp-controller="Author" asp-action="Index">Manage Author</a>
+                                            <a asp-controller="Home" asp-action="Logout">Logout</a>
                                     </div>
                                 </div>
                             </ul>
@@ -105,24 +87,31 @@
                         <thead>
                             <tr>
                                 <form enctype="multipart/form-data" method="POST" asp-action="Create">
+
                                     BookName<input asp-for="BookName" class="form-control">
-                                    BookCover<input asp-for="BookCover" name="bookCover" type="file" accept="images/*"
+                                    <div style="color: red;">@ViewBag.errorNull_BookName</div>
+
+                                    BookCover<input asp-for="BookCover" name="bookCover" type="file" accept="image/*"
                                         class="form-control">
+
                                     YearOfPublic<input asp-for="YearOfPublic" class="form-control">
+                                    <div asp-validation-for="YearOfPublic" style="color: red;">@ViewBag.errorNull__YOP
+                                    </div>
                                     Summary<input asp-for="Summary" class="form-control">
+                                    <div style="color: red;">@ViewBag.errorNull_Summary</div>
                                     Languages<input asp-for="Languages" class="form-control">
+                                    <div style="color: red;">@ViewBag.errorNull_Languages</div>
                                     Content<input asp-for="Content" name="bookContent" type="file"
                                         accept="application/pdf" class="form-control">
+
                                     <input type="submit" value="Create" class="btn btn-primary">
+
                                 </form>
 
                                 </tbody>
                     </div>
                 </div>
             </body>
-            <!-- Footer -->
-
-
 
             </html>
             <!-- partial -->
@@ -130,4 +119,5 @@
 
 
 
-            </html>
+
+        </html>

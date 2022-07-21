@@ -64,16 +64,18 @@
 										<a href="#">Business Administration</a>
 									</div>
 								</div>
-								<div class="search-bar">
-									<input type="search" class="form-control rounded" placeholder="Search"
-										aria-label="Search" aria-describedby="search-addon" />
-									<button type="button" class="btn">search</button>
-								</div>
+								<form asp-controller="Home" asp-action="Index">
+									<div class="search-bar grid-container">
+										<input type="search" class="form-control rounded" name="SearchString"
+											placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+										<button type="submit" value="Filter" class="btn">Search</button>
+									</div>
+								</form>
 								<ul class="navbar_user">
 									<div class="dropdown">
 										<img src="~/images/menu.png" alt="">
 										<div class="dropdown-content">
-											<a asp-controller="Account" asp-action="ProfileUser">Account</a>
+											<a asp-controller="Account" asp-action="ProfileUser">Profile</a>
 											@if (Model.Roles == "Admin")
 											{
 												<a asp-controller="Book" asp-action="Index">Manage Book</a>
@@ -81,11 +83,11 @@
 												<a asp-controller="Account" asp-action="Index">Manage User</a>
 												<a asp-controller="Major" asp-action="Index">Manage Major</a>
 												<a asp-controller="Author" asp-action="Index">Manage Author</a>
-												<a asp-controller="Home" asp-action="Login">Logout</a>
+												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
-											else if (Model.Roles == "Users")
+											else if (Model.Roles == "User")
 											{
-												<a asp-controller="Book" asp-action="BookHistory">Book History</a>
+												<a asp-controller="History" asp-action="Index">Book History</a>
 												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
 											else

@@ -31,7 +31,7 @@ namespace FEBook.DataAccess.Repository
 
         public void DeleteBook(int BookID)
         {
-            BookDAO.Instance.Remove(BookID);
+            BookDAO.Instance.Delete(BookID);
         }
     }
 }

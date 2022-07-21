@@ -178,7 +178,7 @@ namespace FEBook.DataAccess.DAO
                 throw new Exception(ex.InnerException.Message);
             }
         }
-        public void Remove(int AccountID)
+        public void Delete(int AccountID)
         {
             try
             {
@@ -192,6 +192,50 @@ namespace FEBook.DataAccess.DAO
                 else
                 {
                     throw new Exception("The Account does not already exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public void DeleteOnce(int AccountID){
+            try{
+                Account Account = GetAccountByID(AccountID);
+                if (Account != null)
+                {
+                    using var context = new EbookManagementContext();
+                    Account.DeleteStatus=true;
+                    context.Accounts.Update(Account);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The Account does not not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        internal void Restore(int AccountID)
+        {
+            try{
+                Account Account = GetAccountByID(AccountID);
+                if (Account != null)
+                {
+                    using var context = new EbookManagementContext();
+                    Account.DeleteStatus=false;
+                    context.Accounts.Update(Account);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The Account does not not exist.");
                 }
             }
             catch (Exception ex)

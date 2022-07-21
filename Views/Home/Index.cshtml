@@ -93,7 +93,7 @@
 									<div class="dropdown">
 										<img src="images/menu.png" alt="">
 										<div class="dropdown-content">
-											<a asp-controller="Account" asp-action="ProfileUser">Account</a>
+											<a asp-controller="Account" asp-action="ProfileUser">Profile</a>
 
 											@if (Model.userSession != null && Model.userSession.Roles == "Admin")
 											{
@@ -102,11 +102,11 @@
 												<a asp-controller="Account" asp-action="Index">Manage User</a>
 												<a asp-controller="Major" asp-action="Index">Manage Major</a>
 												<a asp-controller="Author" asp-action="Index">Manage Author</a>
-												<a asp-controller="Home" asp-action="Login">Logout</a>
+												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
-											else if (Model.userSession != null && Model.userSession.Roles == "User")
+										else if (Model.userSession != null && Model.userSession.Roles == "User")
 											{
-												<a href="bookHistory.html">Book History</a>
+												<a asp-controller="History" asp-action="Index">Reading History</a>
 												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
 											else
@@ -137,7 +137,6 @@
 							@if (Model.searchrs != null)
 							{
 								<p style="color:black">@Model.searchrs</p>
-
 							}
 						</ul>
 					</div>
@@ -177,19 +176,6 @@
 												</ul>
 											</li>
 										</ul>
-										@* <div class="pages d-flex flex-row align-items-center">
-											<div class="page_current">
-											<span>1</span>
-											<ul class="page_selection">
-											<li><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											</ul>
-											</div>
-											<div class="page_total"><span>of</span> 3</div>
-											<div id="next_page" class="page_next"><a href="#"><i
-											class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-											</div> *@
 
 									</div>
 
@@ -207,7 +193,8 @@
 													<div class="product_info">
 														<h6 class="product_name">@book.BookName</h6>
 													</div>
-													<div class="red_button read"> @Html.ActionLink("ViewBook", "ViewBook",
+													<div class="red_button read"> 
+														@Html.ActionLink("ViewBook", "ViewBook",
 													new {id =book.BookId})</div>
 												</div>
 											</div>
@@ -219,20 +206,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- Product Sorting -->
-			@* <div class="pages d-flex flex-row align-items-center">
-				<div class="page_current">
-				<span>1</span>
-				<ul class="page_selection">
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				</ul>
-				</div>
-				<div class="page_total"><span>of</span> 3</div>
-				<div id="next_page_1" class="page_next"><a href="#"><i class="fa fa-long-arrow-right"
-				aria-hidden="true"></i></a></div>
-				</div> *@
 		</div>
 		<!-- Newsletter -->
 
@@ -308,8 +281,8 @@
 	<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 	<script src="~/plugins/easing/easing.js"></script>
 	<script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	@* <script src="~/js/jquery-3.2.1.min.js"></script>
-		<script src="~/js/categories_custom.js"></script> *@
+	<script src="~/js/jquery-3.2.1.min.js"></script>
+	<script src="~/js/categories_custom.js"></script> 
 </body>
 
 </html>

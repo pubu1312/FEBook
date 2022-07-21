@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,14 +14,22 @@ namespace FEBook.Controllers
 {
     public class BookController : Controller
     {
+        BookDAO bookDAO = new BookDAO();
         IBookRepository bookRepository = null;
         public BookController() => bookRepository = new BookRepository();
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString("email") != null)
             {
-                var bookList = bookRepository.GetBooks();
-                return View(bookList);
+                dynamic model = new ExpandoObject();
+                model.userEmail = HttpContext.Session.GetString("email");
+                model.BookList = new List<Book>();
+                model.BookList = bookDAO.GetBookList();
+
+                model.BookDeletedList = new List<Book>();
+                model.BookDeletedList = bookDAO.GetBookDeletedList();
+
+                return View(model);
             }
             else
             {
@@ -161,36 +170,37 @@ namespace FEBook.Controllers
             return imgSrc;
         }
 
+
         public IActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var Book = bookRepository.GetBookByID(id.Value);
-            if (Book == null)
-            {
-                return NotFound();
-            }
-            return View(Book);
+            if (id == null) return NotFound();
+            bookRepository.DeleteBook(Convert.ToInt32(id));
+            return RedirectToAction(nameof(Index));
         }
 
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteOnce(int? id)
         {
-            try
+            if (id == null) return NotFound();
+            else
             {
-                bookRepository.DeleteBook(id);
-                return RedirectToAction(nameof(Index));
+                bookDAO.DeleteOnce(Convert.ToInt32(id));
             }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Restore(int? id)
+        {
+            if (id == null) return NotFound();
+            else
+            {
+                bookDAO.Restore(Convert.ToInt32(id));
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        
+
+        
 
     }
 }

@@ -25,12 +25,27 @@ namespace FEBook.DataAccess.DAO
             var authors = new List<Author>();
             try {
                 using var context = new EbookManagementContext();
-                authors = context.Authors.ToList();
+                authors = context.Authors.Where(s => s.DeleteStatus == false).ToList();
 
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
             return authors;
+        }
+
+        public IEnumerable<Author> GetAuthorDeletedList()
+        {
+            var authors = new List<Author>();
+            try
+            {
+                using var context = new EbookManagementContext();
+                authors = context.Authors.Where(s => s.DeleteStatus == true).ToList();
+                return authors;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Author GetAuthorByID(int authorID) {
@@ -90,6 +105,49 @@ namespace FEBook.DataAccess.DAO
                 }
             } catch (Exception ex) {
                 throw new Exception (ex.Message);
+            }
+        }
+
+        public void DeleteOnce(int authorID){
+            try{
+                Author _author = GetAuthorByID(authorID);
+                if (_author != null)
+                {
+                    using var context = new EbookManagementContext();
+                    _author.DeleteStatus=true;
+                    context.Authors.Update(_author);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The _author does not not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        internal void Restore(int authorID)
+        {
+            try{
+                Author _author = GetAuthorByID(authorID);
+                if (_author != null)
+                {
+                    using var context = new EbookManagementContext();
+                    _author.DeleteStatus=false;
+                    context.Authors.Update(_author);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The _author does not not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 

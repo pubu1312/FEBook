@@ -25,12 +25,27 @@ namespace FEBook.DataAccess.DAO
             var Majors = new List<Major>();
             try {
                 using var context = new EbookManagementContext();
-                Majors = context.Majors.ToList();
+                Majors = context.Majors.Where(s => s.DeleteStatus == false).ToList();
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
             //System.Console.WriteLine(Majors.Count);
             return Majors;
+        }
+
+        public IEnumerable<Major> GetMajorDeletedList()
+        {
+            var Majors = new List<Major>();
+            try
+            {
+                using var context = new EbookManagementContext();
+                Majors = context.Majors.Where(s => s.DeleteStatus == true).ToList();
+                return Majors;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Major GetMajorByID(int majorId) {
@@ -86,6 +101,49 @@ namespace FEBook.DataAccess.DAO
                     throw new Exception("The Major does not not exist.");
                 }
             } catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DeleteOnce(int majorId){
+            try{
+                Major _Major = GetMajorByID(majorId);
+                if (_Major != null)
+                {
+                    using var context = new EbookManagementContext();
+                    _Major.DeleteStatus=true;
+                    context.Majors.Update(_Major);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The Subject does not not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        internal void Restore(int majorId)
+        {
+            try{
+                Major _Major = GetMajorByID(majorId);
+                if (_Major != null)
+                {
+                    using var context = new EbookManagementContext();
+                    _Major.DeleteStatus=false;
+                    context.Majors.Update(_Major);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The Subject does not not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
                 throw new Exception(ex.Message);
             }
         }

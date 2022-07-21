@@ -2,12 +2,132 @@
 @{
     ViewData["Title"] = "Create";
 }
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/styles/util.css">
+	<link rel="stylesheet" href="~/styles/account.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="~/css/bootstrap4/bootstrap.min.css">
+	<link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" href="~/styles/categories_styles.css">
+	<link rel="stylesheet" href="~/styles/categories_responsive.css">
 
-<h1 class="row">Create new Subject</h1><br/>
-<div class = "row">
+</head>
 
-    <form method="POST" asp-action="Create">
-        SubjectName<input asp-for="Subname" class="form-control">
-        <input type="submit" value="Create" class="btn btn-primary">
-    </form>
-</div>
+<body>
+	<div class="super_container">
+		<!-- Header -->
+		<header class="header trans_300">
+
+			<!-- Main Navigation -->
+
+			<div class="main_nav_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <div class="logo_container">
+                                <a asp-controller="Home" asp-action="Index">F<span>E-Book</span></a>
+                            </div>
+                            <nav class="navbar">
+                                <div>
+                                    <a class="home" asp-controller="Home" asp-action="Index">HOME</a>
+                                    
+                                </div>
+                                <div class="search-bar">
+                                    <input type="search" class="form-control rounded" placeholder="Search"
+                                        aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="button" class="btn">search</button>
+                                </div>
+                                <ul class="navbar_user">
+                                    <div class="menu">
+                                        <img src="~/images/menu.png" alt="">
+                                        <div class="dropdown-content">
+                                            <a asp-controller="Account" asp-action="ProfileUser">Profile</a>
+                                            <a asp-controller="Book" asp-action="Index">Manage Book</a>
+                                            <a asp-controller="Account" asp-action="Index">Manage User</a>
+                                            <a asp-controller="Major" asp-action="Index">Manage Major</a>
+                                            <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
+                                            <a asp-controller="Author" asp-action="Index">Manage Author</a>
+                                            <a asp-controller="Home" asp-action="Logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+		</header>
+
+		<div class="fs_menu_overlay"></div>
+	</div>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form method="POST" asp-action="Create" class="login100-form validate-form">
+					<span class="login100-form-title">
+						Subject
+					</span>
+					<div class="wrap-input100 validate-input">
+						<h5>Subject Name</h5>
+						<input asp-for="Subname" class="input100" type="text" placeholder="Subname">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<input type="submit" value="Create" class="login100-form-btn">
+                        
+					</div>
+					<br>
+				</form>
+                <a asp-action="Index"><button class="login100-form-btn2" style="margin-left: 280px ;">Back</button></a>
+					
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+	<!--===============================================================================================-->
+	<script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/vendor/bootstrap/js/popper.js"></script>
+	<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/vendor/tilt/tilt.jquery.min.js"></script>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="~/js/main.js"></script>
+
+</body>

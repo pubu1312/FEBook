@@ -15,7 +15,7 @@ namespace FEBook.Models
             FullName = username;
             Email = email;
             Passwords = password;
-            Phone = "00000000000";
+            Phone = "0000000000";
         }
         public Account()
         {

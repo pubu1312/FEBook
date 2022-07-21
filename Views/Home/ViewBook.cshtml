@@ -50,7 +50,7 @@
 									</div>
 								</div>
 								<!-- check session -->
-								<form asp-controller="Books" asp-action="Index">
+								<form asp-controller="Home" asp-action="Index">
 									<div class="search-bar grid-container">
 										<input type="search" class="form-control rounded" name="SearchString"
 											placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -62,7 +62,7 @@
 									<div class="dropdown">
 										<img src="~/images/menu.png" alt="">
 										<div class="dropdown-content">
-											<a asp-controller="Account" asp-action="ProfileUser">Account</a>
+											<a asp-controller="Account" asp-action="ProfileUser">Profile</a>
 
 											@if (Model.userSession != null && Model.userSession.Roles == "Admin")
 											{
@@ -70,12 +70,12 @@
 												<a asp-controller="Subject" asp-action="Index">Manage Subject</a>
 												<a asp-controller="Account" asp-action="Index">Manage User</a>
 												<a asp-controller="Major" asp-action="Index">Manage Major</a>
-												<a asp-controller="Subject" asp-action="Index">Manage Major</a>
-												<a asp-controller="Home" asp-action="Login">Logout</a>
+												<a asp-controller="Author" asp-action="Index">Manage Author</a>
+												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
 											else if (Model.userSession != null && Model.userSession.Roles == "User")
 											{
-												<a asp-controller="Home" asp-action="BookHistory">Book History</a>
+												<a asp-controller="History" asp-action="Index">Book History</a>
 												<a asp-controller="Home" asp-action="Logout">Logout</a>
 											}
 											else
@@ -125,7 +125,7 @@
 									</p>
 								</div>
 								<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-									<span class="ti-calendar"></span><span>@Model.book.UpdateDate</span>
+									<span class="ti-calendar"></span><span>Update on: @Model.book.UpdateDate.ToShortDateString()</span>
 								</div>
 								<div class="user_rating">
 									<ul class="star_rating">
@@ -171,16 +171,14 @@
 										class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
 										<li class="tab active" data-active-tab="tab_1"><span>Description</span></li>
 										<li class="tab" data-active-tab="tab_2"><span>Additional Information</span></li>
-										<li class="tab" data-active-tab="tab_3"><span>Reviews (2)</span></li>
+										<li class="tab" data-active-tab="tab_3"><span>Reviews</span></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
-
 								<!-- Tab Description -->
-
 								<div id="tab_1" class="tab_container active">
 									<div class="row">
 										<div class="col-lg-5 desc_col">
@@ -220,29 +218,7 @@
 
 										<div class="col-lg-6 reviews_col">
 											<div class="tab_title reviews_title">
-												<h4>Reviews (2)</h4>
-											</div>
-
-											<!-- User Review -->
-
-											<div class="user_review_container d-flex flex-column flex-sm-row">
-												<div class="user">
-													<div class="user_pic"></div>
-													<div class="user_rating">
-														<ul class="star_rating">
-															<li><i class="fa fa-star" aria-hidden="true"></i></li>
-															<li><i class="fa fa-star" aria-hidden="true"></i></li>
-															<li><i class="fa fa-star" aria-hidden="true"></i></li>
-															<li><i class="fa fa-star" aria-hidden="true"></i></li>
-															<li><i class="fa fa-star" aria-hidden="true"></i></li>
-														</ul>
-													</div>
-												</div>
-												<div class="review">
-													<div class="review_date">31/05/2022</div>
-													<div class="user_name">Pu Buh</div>
-													<p>Sach rat hay 5 sao</p>
-												</div>
+												<h4>Reviews </h4>
 											</div>
 
 											<!-- User Review -->
@@ -261,9 +237,9 @@
 													</div>
 												</div>
 												<div class="review">
-													<div class="review_date">29/05/2022 </div>
+													<div class="review_date">29/05/2022</div>
 													<div class="user_name">Jimmi Dang</div>
-													<p>Sach nhu dau buoi re rach</p>
+													<p>Sach te qua</p>
 												</div>
 											</div>
 										</div>
@@ -303,6 +279,7 @@
 													</div>
 												</form>
 											</div>
+											<!-- Add Review -->
 										</div>
 
 									</div>

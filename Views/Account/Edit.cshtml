@@ -1,6 +1,6 @@
 @model Account
 @{
-	ViewData["Title"] = "Create";
+	ViewData["Title"] = "Edit Account";
 }
 
 <head>
@@ -83,11 +83,13 @@
                                     <div class="menu">
                                         <img src="~/images/menu.png" alt="">
                                         <div class="dropdown-content">
-                                            <a asp-controller="Subject" asp-action="Index">Subject</a>
+                                            <a asp-controller="Account" asp-action="ProfileUser">Profile</a>
+                                            <a asp-controller="Book" asp-action="Index">Manage Book</a>
+                                            <a asp-controller="Account" asp-action="Index">Manage User</a>
+                                            <a asp-controller="Major" asp-action="Index">Manage Major</a>
                                             <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
-                                            <a asp-controller="Subject" asp-action="Index">Manage User</a>
-                                            <a asp-controller="Home" asp-action="Index">Subject History</a>
-                                            <a asp-controller="Home" asp-action="Login">Logout</a>
+                                            <a asp-controller="Author" asp-action="Index">Manage Author</a>
+                                            <a asp-controller="Home" asp-action="Logout">Logout</a>
                                         </div>
                                     </div>
                                 </ul>

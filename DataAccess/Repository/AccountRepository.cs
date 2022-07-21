@@ -36,7 +36,7 @@ namespace FEBook.DataAccess.Repository
 
         public void DeleteAccount(int AccountID)
         {
-            AccountDAO.Instance.Remove(AccountID);
+            AccountDAO.Instance.Delete(AccountID);
         }
     }
 }
