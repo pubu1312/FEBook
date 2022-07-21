@@ -2,18 +2,3 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
-<h1 class="row">Delete Account</h1><br/>
-<div class = "row">
-
-    <form method="POST" asp-action="Delete">
-        UserId<input asp-for="UserId" class="form-control" readonly>
-        UserName<input asp-for="UserName" class="form-control" readonly>
-        Passwords<input asp-for="Passwords" class="form-control"readonly>
-        Roles<input asp-for="Roles" class="form-control"readonly>
-        FullName<input asp-for="FullName" class="form-control"readonly>
-        Email<input asp-for="Email" class="form-control"readonly>
-        Phone<input asp-for="Phone" class="form-control"readonly>
-        <input type="submit" value="Delete" class="btn btn-primary">
-    </form>
-</div>

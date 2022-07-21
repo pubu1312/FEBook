@@ -7,6 +7,12 @@ namespace FEBook.Models
 {
     public partial class ReadingHistory
     {
+        // public ReadingHistory(DateTime dateTime, int userId, int bookId)
+        // {
+        //     DateRead = dateTime;
+        //     UserId = userId;
+        //     BookId = bookId;
+        // }
         public DateTime DateRead { get; set; }
         public int UserId { get; set; }
         public int BookId { get; set; }

@@ -223,7 +223,7 @@ COLOR PALETTE
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border: solid 1px #fe4c50;
+	/* border: solid 1px #fe4c50; */
 	content: '';
 	visibility: hidden;
 }

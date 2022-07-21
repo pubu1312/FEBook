@@ -17,7 +17,6 @@
     <div class="row">
         <b class="col-6">BookCover</b>
         <div class="col-6"><td><img src="~/@Model.BookCover"height="284" width="173" alt=""></td></div>
-  @* <td><img src="@Book.BookCover" height="284" width="173" alt=""></td> *@
 
     </div>
     <div class="row">
@@ -34,10 +33,10 @@
     </div>
     <div class="row">
         <b class="col-6">Content</b>
-        <div class="col-6"><td><img src="~/@Model.Content"height="284" width="173" alt=""></td></div>
+        <div class="col-6"><td><a asp-controller="Home" asp-action="DownloadBook" asp-route-Id="@Model.BookId" target="blank">link to book</a></td></div>
     </div>
     <div class="row">
-        <b class="col-6">UpdateDate</b>
+        <b class="col-6">Update Date</b>
         <div class="col-6">@Model.UpdateDate</div>
     </div>
     

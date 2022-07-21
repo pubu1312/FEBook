@@ -44,12 +44,11 @@
 										{
 											<a type="text" name="username" asp-for="@Model.userSession.UserName"
 											style="color:White" asp-controller="Account"
-											asp-action="ProfileUser">@Model.userSession.UserName</a>
+											asp-action="ProfileUser"><span>Hello, @Model.userSession.UserName</span></a>
 										}
 										else
 										{
 											<a asp-action="Login">Sign-in</a>
-
 										}
 									</li>
 								</ul>
@@ -66,10 +65,9 @@
 					<div class="row">
 						<div class="col-lg-12 text-right">
 							<div class="logo_container">
-								<a href="index.cshtml">F<span>E-BOOK</span></a>
+								<a href="">F<span>E-BOOK</span></a>
 							</div>
 							<nav class="navbar">
-
 								<ul class="navbar_menu">
 									<li><a class="home" asp-controller="Home" asp-action="Index">HOME</a></li>
 								</ul>
@@ -100,8 +98,11 @@
 											@if (Model.userSession != null && Model.userSession.Roles == "Admin")
 											{
 												<a asp-controller="Book" asp-action="Index">Manage Book</a>
+												<a asp-controller="Subject" asp-action="Index">Manage Subject</a>
 												<a asp-controller="Account" asp-action="Index">Manage User</a>
-												<a asp-controller="Home" asp-action="Logout">Logout</a>
+												<a asp-controller="Major" asp-action="Index">Manage Major</a>
+												<a asp-controller="Author" asp-action="Index">Manage Author</a>
+												<a asp-controller="Home" asp-action="Login">Logout</a>
 											}
 											else if (Model.userSession != null && Model.userSession.Roles == "User")
 											{
@@ -133,6 +134,11 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
+							@if (Model.searchrs != null)
+							{
+								<p style="color:black">@Model.searchrs</p>
+
+							}
 						</ul>
 					</div>
 
@@ -171,28 +177,28 @@
 												</ul>
 											</li>
 										</ul>
-										<div class="pages d-flex flex-row align-items-center">
+										@* <div class="pages d-flex flex-row align-items-center">
 											<div class="page_current">
-												<span>1</span>
-												<ul class="page_selection">
-													<li><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-												</ul>
+											<span>1</span>
+											<ul class="page_selection">
+											<li><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											</ul>
 											</div>
 											<div class="page_total"><span>of</span> 3</div>
 											<div id="next_page" class="page_next"><a href="#"><i
-														class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-										</div>
+											class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+											</div> *@
 
 									</div>
 
 									<!-- Product Grid -->
 
-									<div class="product-grid">
+									<div class="product-grid row">
 										@foreach (var book in Model.searchBook)
 										{
-											<div class="product-item">
+											<div class="col-3 product-item">
 												<div class="product discount product_filter">
 													<div class="product_image">
 														<img src="@book.BookCover" height="284" width="173" alt="">
@@ -201,12 +207,12 @@
 													<div class="product_info">
 														<h6 class="product_name">@book.BookName</h6>
 													</div>
-													<div class="red_button read"> @Html.ActionLink("ViewBook", "ViewBook", new {id =book.BookId})</div>
+													<div class="red_button read"> @Html.ActionLink("ViewBook", "ViewBook",
+													new {id =book.BookId})</div>
 												</div>
 											</div>
 										}
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -214,19 +220,19 @@
 				</div>
 			</div>
 			<!-- Product Sorting -->
-			<div class="pages d-flex flex-row align-items-center">
+			@* <div class="pages d-flex flex-row align-items-center">
 				<div class="page_current">
-					<span>1</span>
-					<ul class="page_selection">
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-					</ul>
+				<span>1</span>
+				<ul class="page_selection">
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				</ul>
 				</div>
 				<div class="page_total"><span>of</span> 3</div>
 				<div id="next_page_1" class="page_next"><a href="#"><i class="fa fa-long-arrow-right"
-							aria-hidden="true"></i></a></div>
-			</div>
+				aria-hidden="true"></i></a></div>
+				</div> *@
 		</div>
 		<!-- Newsletter -->
 
@@ -237,7 +243,7 @@
 						<div
 							class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
 							<h4>Newsletter</h4>
-							<p>Subscribe to our newsletter and get notification of updated book </p>
+							<p> Subscribe to our newsletter and get notification of updated book </p>
 						</div>
 					</div>
 					<div class="col-lg-6">
@@ -284,7 +290,9 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="footer_nav_container">
-							<div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
+							<div class="cr">©2018 All Rights Reserverd. This template is made with <i
+									class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a>
+								&amp; distributed by <a href="https://themewagon.com">ThemeWagon</a></div>
 						</div>
 					</div>
 				</div>
@@ -294,14 +302,14 @@
 
 	</div>
 
-	<script src="~/js/jquery-3.2.1.min.js"></script>
 	<script src="~/css/bootstrap4/popper.js"></script>
 	<script src="~/css/bootstrap4/bootstrap.min.js"></script>
 	<script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
 	<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 	<script src="~/plugins/easing/easing.js"></script>
 	<script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="~/js/categories_custom.js"></script>
+	@* <script src="~/js/jquery-3.2.1.min.js"></script>
+		<script src="~/js/categories_custom.js"></script> *@
 </body>
 
 </html>

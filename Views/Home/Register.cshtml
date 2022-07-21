@@ -1,3 +1,4 @@
+@model Account
 @{
     ViewData["Title"] = "Register";
 }
@@ -44,22 +45,6 @@
 
 			<!-- Top Navigation -->
 
-			<div class="top_nav">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="top_nav_left"></div>
-						</div>
-						<div class="col-md-6 text-right">
-							<div class="top_nav_right">
-								<ul class="top_nav_menu">
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
 			<!-- Main Navigation -->
 
 			<div class="main_nav_container">
@@ -90,12 +75,12 @@
 					<img src="~/images/library.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" asp-action="Register">
 					<span class="login100-form-title">
 						Register
 					</span>
 					<div class="wrap-input100 validate-input" data-validate="Please enter a username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Username" asp-for="UserName">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -104,7 +89,7 @@
 
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="passwords" placeholder="Password" asp-for="Passwords">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -112,7 +97,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Please confirm your password again">
-						<input class="input100" type="password" name="pass" placeholder="Confirm Password">
+						<input class="input100" type="password" name="passwords" placeholder="Confirm Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -120,7 +105,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100" type="text" name="email" placeholder="Email" asp-for="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>

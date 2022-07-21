@@ -17,11 +17,15 @@ namespace FEBook.Controllers
 
         public IActionResult Index()
         {
-            dynamic model = new ExpandoObject();
-            model.userEmail = HttpContext.Session.GetString("email");
-            model.majorList = new List<Major>();
-            model.majorList = majorRepository.GetMajors();
-            return View(model);
+            if (HttpContext.Session.GetString("email") != null)
+            {
+                var majorList = majorRepository.GetMajors();
+                return View(majorList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public IActionResult Detail(int? id)
@@ -99,9 +103,7 @@ namespace FEBook.Controllers
         {
 
             if (id == null) return NotFound();
-            Major major = majorRepository.GetMajorByID(Convert.ToInt32(id));
-            majorRepository.DeleteMajor(major.MajorId);
-            if (major == null) return NotFound();
+            majorRepository.DeleteMajor(id.Value);
             return RedirectToAction(nameof(Index));
         }
 

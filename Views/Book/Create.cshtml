@@ -3,21 +3,131 @@
     ViewData["Title"] = "Create";
 }
 
-<h1 class="row">Create new Book</h1><br/>
-<div class = "row">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />
+    <link rel="stylesheet" href="~/plugins/OwlCarousel2-2.2.1/animate.css" />
+    <link rel="stylesheet" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>>
+    <link rel="stylesheet" href="~/styles/manage.css" />
 
-    <form enctype="multipart/form-data" method="POST" asp-action="Create">
-        BookName<input asp-for="BookName" class="form-control">
-        BookCover<input asp-for="BookCover" name="bookCover" type="file" class="form-control">
-        YearOfPublic<input asp-for="YearOfPublic" class="form-control">
-        Summary<input asp-for="Summary" class="form-control">
-        Languages<input asp-for="Languages" class="form-control">
-        Content<input asp-for="Content" name="bookContent" type="file" accept="application/pdf" class="form-control">
-        UpdateDate<input asp-for="UpdateDate" type ="date" class="form-control">
-        <input type="submit" value="Create" class="btn btn-primary">
-    </form>
-</div>
+</head>
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    <header class="header trans_300">
+
+        <!-- Top Navigation -->
+
+        <div class="top_nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="top_nav_left"></div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="top_nav_right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+
+        <div class="main_nav_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <div class="logo_container">
+                            <a asp-controller="Home" asp-action="Index">F<span>E-BOOK</span></a>
+                        </div>
+                        <nav class="navbar">
+                            <div>
+                                <a class="home" asp-controller="Home" asp-action="Index">HOME</a>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Major</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">Software Engineering</a>
+                                        <a href="#">Graphic Design</a>
+                                        <a href="#">Business Administration</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-bar">
+                                <input type="search" class="form-control rounded" placeholder="Search"
+                                    aria-label="Search" aria-describedby="search-addon" />
+                                <button type="button" class="btn">search</button>
+                            </div>
+                            <ul class="navbar_user">
+                                <div class="menu">
+                                    <img src="~/images/menu.png" alt="">
+                                    <div class="dropdown-content">
+                                        <a asp-controller="Book" asp-action="Index">Manage Book</a>
+                                        <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
+                                        <a asp-controller="Account" asp-action="Index">Manage User</a>
+                                        <a asp-controller="Major" asp-action="Index">Manage Major</a>
+                                        <a asp-controller="Author" asp-action="Index">Manage Author</a>
+                                        <a asp-controller="Home" asp-action="Login">Logout</a>
+                                    </div>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- -->
+    <div class="container product_section_container">
+        <div class="row">
+
+            <body>
+                <div class="container">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>Create Books</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <thead>
+                            <tr>
+                                <form enctype="multipart/form-data" method="POST" asp-action="Create">
+                                    BookName<input asp-for="BookName" class="form-control">
+                                    BookCover<input asp-for="BookCover" name="bookCover" type="file" accept="images/*"
+                                        class="form-control">
+                                    YearOfPublic<input asp-for="YearOfPublic" class="form-control">
+                                    Summary<input asp-for="Summary" class="form-control">
+                                    Languages<input asp-for="Languages" class="form-control">
+                                    Content<input asp-for="Content" name="bookContent" type="file"
+                                        accept="application/pdf" class="form-control">
+                                    <input type="submit" value="Create" class="btn btn-primary">
+                                </form>
+
+                                </tbody>
+                    </div>
+                </div>
+            </body>
+            <!-- Footer -->
 
 
 
+            </html>
+            <!-- partial -->
+            <script src="~/js/script.js"></script>
 
+
+
+            </html>

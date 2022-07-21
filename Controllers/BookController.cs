@@ -17,10 +17,15 @@ namespace FEBook.Controllers
         public BookController() => bookRepository = new BookRepository();
         public IActionResult Index()
         {
-            //System.Console.WriteLine("Im here");
-            var bookList = bookRepository.GetBooks();
-            return View(bookList);
-
+            if (HttpContext.Session.GetString("email") != null)
+            {
+                var bookList = bookRepository.GetBooks();
+                return View(bookList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public IActionResult Detail(int? id)
@@ -74,12 +79,11 @@ namespace FEBook.Controllers
                     using var fileStream2 = new FileStream(bookContentPath, FileMode.Create);
                     bookContent.CopyTo(fileStream2);
 
-                    string bookContentSrc = String.Format("pdf/{0}", bookContent.FileName);
+                    string bookContentSrc = String.Format(bookContent.FileName);
                     book.Content = bookContentSrc;
-                    // using (var file = new FileStream(bookCoverPath, FileMode.Create))
-                    // {
-                    //     bookCover.CopyTo(file);
-                    // }
+
+                    book.UpdateDate = DateTime.Now.Date;
+
                     bookRepository.InsertBook(book);
                     return RedirectToAction(nameof(Index));
                 }
@@ -120,8 +124,9 @@ namespace FEBook.Controllers
                     var bookContentPath = Path.Combine(dirPath2, bookContent.FileName);
                     using var fileStream2 = new FileStream(bookContentPath, FileMode.Create);
                     bookContent.CopyTo(fileStream2);
-                    string bookContentSrc = String.Format("pdf/{0}", bookContent.FileName);
+                    string bookContentSrc = String.Format(bookContent.FileName);
                     book.Content = bookContentSrc;
+                    book.UpdateDate = DateTime.Now.Date;
                     bookRepository.UpdateBook(book);
                 }
 
@@ -186,6 +191,6 @@ namespace FEBook.Controllers
                 return View();
             }
         }
-        
+
     }
 }

@@ -1114,7 +1114,23 @@ section
 .product_name
 {
 	margin-top: 27px;
+  	display: -webkit-box;
+  	-webkit-line-clamp: 1;  /* số dòng hiển thị */
+  	-webkit-box-orient: vertical;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	margin-top:10px;
 }
+
+.product_name:hover
+{
+	margin-top: 27px;
+  	display: -webkit-box;
+  	-webkit-box-orient: vertical;
+  	text-overflow: ellipsis;
+  	margin-top:10px;
+}
+
 .product_name a
 {
 	color: #1e1e27;

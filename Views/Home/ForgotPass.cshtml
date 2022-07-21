@@ -1,5 +1,6 @@
+@model Account
 @{
-    ViewData["Title"] = "ForgotPass";
+	ViewData["Title"] = "ForgotPass";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -73,12 +74,13 @@
 							</div>
 							<nav class="navbar">
 								<ul class="navbar_menu">
-									<li><a style="opacity: 0"  asp-controller="Home" asp-action="Index">CLICKHEREEEEEEEE</a></li>
+									<li><a style="opacity: 0" asp-controller="Home"
+											asp-action="Index">CLICKHEREEEEEEEE</a></li>
 								</ul>
 							</nav>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 
 		</header>
@@ -92,21 +94,37 @@
 					<img src="~/images/library.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" asp-action="ForgotPass">
 					<span class="login100-form-title">
 						Forget Password
 					</span>
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Enter your email address">
+						<input class="input100" type="text" name="email" placeholder="Enter your email address"
+							asp-for="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="passwords" placeholder="Enter your new password"
+							asp-for="Passwords">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-key" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please confirm your password again">
+						<input class="input100" type="password" name="passwords" placeholder="Re-enter your new password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-key" aria-hidden="true"></i>
+						</span>
+					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Reset Password 
+						<button type="submit" class="login100-form-btn">
+							Reset Password
 						</button>
 					</div>
 
@@ -116,7 +134,7 @@
 						</a>
 					</div>
 					<div class="createAcc p-t-136">
-						<a class="txt2"  asp-controller="Home" asp-action="Login">
+						<a class="txt2" asp-controller="Home" asp-action="Login">
 							You just remember your password? Login here
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
@@ -126,43 +144,43 @@
 		</div>
 	</div>
 
-<!-- Footer -->
+	<!-- Footer -->
 
-<footer class="footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-				<div
-					class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
-					<ul class="footer_nav">
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">FAQs</a></li>
-						<li><a href="contact.html">Contact us</a></li>
-					</ul>
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div
+						class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+						<ul class="footer_nav">
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">FAQs</a></li>
+							<li><a href="contact.html">Contact us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div
+						class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-6">
-				<div
-					class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
-					<ul>
-						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-					</ul>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="footer_nav_container">
+						<div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="footer_nav_container">
-					<div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
+	</footer>
 
 
 	<!--===============================================================================================-->

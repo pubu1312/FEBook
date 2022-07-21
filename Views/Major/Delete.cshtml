@@ -2,13 +2,3 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
-<h1 class="row">Delete Major</h1><br/>
-<div class = "row">
-
-    <form method="POST" asp-action="Delete">
-        <input asp-for="MajorId" hidden>
-        MajorName<input asp-for="MajorName" class="form-control" readonly>
-        <input type="submit" value="Delete" class="btn btn-primary">
-    </form>
-</div>

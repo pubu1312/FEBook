@@ -7,6 +7,16 @@ namespace FEBook.Models
 {
     public partial class Account
     {
+        public Account(string username, string email, string password)
+        {
+            UserId=0;
+            UserName = username;
+            Roles = "User";
+            FullName = username;
+            Email = email;
+            Passwords = password;
+            Phone = "00000000000";
+        }
         public Account()
         {
             BookDowndoads = new List<BookDowndoad>();

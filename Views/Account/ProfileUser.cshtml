@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
 	<!--===============================================================================================-->
@@ -44,24 +45,24 @@
 			<!-- Main Navigation -->
 
 			<div class="main_nav_container">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-right">
-						<div class="logo_container">
-							<a>F<span>E-BOOK</span></a>
-						</div>
-						<nav class="navbar">
-							
-							<ul class="navbar_menu">
-								<li><a class="home" asp-controller="Home" asp-action="Index">HOME</a></li>
-							</ul>
-							<div class="dropdown">
-								<button class="dropbtn">Major</button>
-								<div class="dropdown-content">
-									<a href="#">Software Engineering</a>
-									<a href="#">Graphic Design</a>
-									<a href="#">Business Administration</a>
-								</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-right">
+							<div class="logo_container">
+								<a>F<span>E-BOOK</span></a>
+							</div>
+							<nav class="navbar">
+
+								<ul class="navbar_menu">
+									<li><a class="home" asp-controller="Home" asp-action="Index">HOME</a></li>
+								</ul>
+								<div class="dropdown">
+									<button class="dropbtn">Major</button>
+									<div class="dropdown-content">
+										<a href="#">Software Engineering</a>
+										<a href="#">Graphic Design</a>
+										<a href="#">Business Administration</a>
+									</div>
 								</div>
 								<div class="search-bar">
 									<input type="search" class="form-control rounded" placeholder="Search"
@@ -76,8 +77,11 @@
 											@if (Model.Roles == "Admin")
 											{
 												<a asp-controller="Book" asp-action="Index">Manage Book</a>
+												<a asp-controller="Subject" asp-action="Index">Manage Subject</a>
 												<a asp-controller="Account" asp-action="Index">Manage User</a>
-												<a asp-controller="Home" asp-action="Logout">Logout</a>
+												<a asp-controller="Major" asp-action="Index">Manage Major</a>
+												<a asp-controller="Author" asp-action="Index">Manage Author</a>
+												<a asp-controller="Home" asp-action="Login">Logout</a>
 											}
 											else if (Model.Roles == "Users")
 											{
@@ -105,24 +109,33 @@
 
 	</div>
 	<!-- Account form -->
+	<!-- Account form -->
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic">
-					<img src="~/images/default-avatar.png" alt="IMG">
+					<img src="~/images/default-avatar2.jpg" alt="IMG">
 					<div class="browse">
 						<label for="myfile"></label>
 						<span>You can not change the avatar :></span>
 					</div>
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" asp-action="Save">
 					<span class="login100-form-title">
 						Account
 					</span>
 					<div class="wrap-input100 validate-input">
 						<h5>Username</h5>
 						<input class="input100" type="text" name="username" asp-for="UserName">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<h5>Full Name</h5>
+						<input class="input100" type="text" name="fullname" asp-for="FullName">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -140,6 +153,15 @@
 					</div>
 
 					<div class="wrap-input100 validate-input">
+						<h5>Passwords</h5>
+						<input class="input100" type="text" style="-webkit-text-security: circle;" name="passwords" asp-for="Passwords">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
 						<h5>Phone Number</h5>
 						<input class="input100" type="text" name="phone" asp-for="Phone">
 						<span class="focus-input100"></span>
@@ -147,9 +169,21 @@
 							<i class="fa fa-phone" aria-hidden="true"></i>
 						</span>
 					</div>
-
+					
+					<div class="wrap-input100">
+						<h5>Major</h5>
+						<input class="input100" type="text" name="majorid" asp-for="MajorId">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-book" aria-hidden="true"></i>
+						</span>
+					</div>
+					<input type="text" name="userid" asp-for="UserId" hidden>
+					<input type="text" name="roles" asp-for="Roles" hidden>
+					<input type="text" name="deletestatus" asp-for="DeleteStatus" hidden>
+					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button type="submit" class="login100-form-btn">
 							Save
 						</button>
 					</div>
@@ -169,7 +203,7 @@
 						<ul class="footer_nav">
 							<li><a href="#">Blog</a></li>
 							<li><a href="#">FAQs</a></li>
-							<li><a href="contact.html">Contact us</a></li>
+							<li><a asp-controller="Home" asp-action="Index">Contact us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -189,7 +223,9 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="footer_nav_container">
-						<div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
+						<div class="cr">©2018 All Rights Reserverd. This template is made with <i class="fa fa-heart-o"
+								aria-hidden="true"></i> by <a href="#">Colorlib</a>
+							&amp; distributed by <a href="https://themewagon.com">ThemeWagon</a></div>
 					</div>
 				</div>
 			</div>
@@ -201,21 +237,21 @@
 
 
 	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="~/vendor/bootstrap/js/popper.js"></script>
+	<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="~/vendor/select2/select2.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script src="~/vendor/tilt/tilt.jquery.min.js"></script>
 	<script>
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
 	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="~/js/main.js"></script>
 
 </body>
 

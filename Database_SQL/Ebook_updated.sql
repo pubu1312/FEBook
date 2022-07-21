@@ -69,7 +69,7 @@ CREATE TABLE BookRating(
 
 CREATE TABLE ReadingHistory(
   DateRead datetime not null , 
-  UserID  INT IDENTITY(1,1) ,
+  UserID  INT ,
   BookID INT ,
   PRIMARY KEY (UserID, BookID, DateRead),
   FOREIGN KEY (UserID) REFERENCES Account(UserID),

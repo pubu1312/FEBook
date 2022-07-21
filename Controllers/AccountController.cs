@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using FEBook.DataAccess.DAO;
 using FEBook.DataAccess.Repository;
 using FEBook.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -17,8 +19,20 @@ namespace FEBook.Controllers
 
         public IActionResult Index()
         {
+            string userEmail = HttpContext.Session.GetString("email");
+            if (userEmail == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            AccountDAO accountdao = new AccountDAO();
+            Account account = accountdao.GetAccountByEmail(userEmail);
+            if (account == null || account.Roles != "Admin")
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var accountList = accountRepository.GetAccounts();
             return View(accountList);
+
         }
         public IActionResult Create()
         {
@@ -77,25 +91,45 @@ namespace FEBook.Controllers
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
-            Account account = accountRepository.GetAccountByID(Convert.ToInt32(id));
-            accountRepository.DeleteAccount(account.UserId);
-            if (account == null) return NotFound();
+            accountRepository.DeleteAccount(id.Value);
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult ProfileUser(Account account)
         {
-             if (HttpContext.Session.GetString("email") != null) {
+            if (HttpContext.Session.GetString("email") != null)
+            {
                 string email = HttpContext.Session.GetString("email");
                 var _account = accountRepository.GetAccountByEmail(email);
-                //System.Console.WriteLine(_account.UserName);
+                
                 return View(_account);
             }
-            else {
-                return RedirectToAction("Index","Home");
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Save(Account account)
+        {
+            try
+            {
+                var _account = accountRepository.GetAccountByID(Convert.ToInt32(account.UserId));
+                if (ModelState.IsValid)
+                {
+                    accountRepository.UpdateAccount(account);
+                    return RedirectToAction(nameof(ProfileUser));
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+            return View(account);
+        }
+
     }
 }
 

@@ -71,10 +71,11 @@
                                 <div class="menu">
                                     <img src="~/images/menu.png" alt="">
                                     <div class="dropdown-content">
-                                        <a asp-controller="Book" asp-action="Index">Book</a>
                                         <a asp-controller="Book" asp-action="Index">Manage Book</a>
-                                        <a asp-controller="Book" asp-action="Index">Manage User</a>
-                                        <a asp-controller="Home" asp-action="Index">Book History</a>
+                                        <a asp-controller="Subject" asp-action="Index">Manage Subject</a>
+                                        <a asp-controller="Account" asp-action="Index">Manage User</a>
+                                        <a asp-controller="Major" asp-action="Index">Manage Major</a>
+                                        <a asp-controller="Author" asp-action="Index">Manage Author</a>
                                         <a asp-controller="Home" asp-action="Login">Logout</a>
                                     </div>
                                 </div>
@@ -106,78 +107,27 @@
                                 <form method="POST" asp-action="Edit" enctype="multipart/form-data">
                                     <input asp-for="BookId" name="bookId" type="text" hidden>
                                     Book Name<input asp-for="BookName" name="bookName" type="text" class="form-control">
-                                    Book Cover<input name="bookCover" type="file" class="form-control">
-                                    Year Of Public<input asp-for="YearOfPublic" name="yearOfPublic" type="text" class="form-control">
-                                    Summary <input asp-for="Summary" name="summary"class="form-control">
-                                    Languages <input asp-for="Languages" name="languages" type="text" class="form-control">
-                                    Content <input asp-for="Content" name="bookContent" type="file" accept="application/pdf" class="form-control">
-                                    Updated Date <input asp-for="UpdateDate" name="updateDate" type="date" class="form-control">
+                                    Book Cover: <span>@Model.BookCover</span>
+                                    <input name="bookCover" type="file" class="form-control" accept="images/*">
+                                    Year Of Public<input asp-for="YearOfPublic" name="yearOfPublic" type="text"
+                                        class="form-control">
+                                    Summary <input asp-for="Summary" name="summary" class="form-control">
+                                    Languages <input asp-for="Languages" name="languages" type="text"
+                                        class="form-control">
+                                    Content: <span>@Model.Content</span>
+                                    <input asp-for="Content" name="bookContent" type="file" accept="application/pdf"
+                                        class="form-control">
                                     <div style="margin-top:2%;margin-left:45%;margin-right:0%">
-                                        <a asp-action="Edit"><button class="btn btn-success">Edit</button></a>
-                                        @* <a asp-action="Index" asp-controller="Book"><button class="btn btn-back"
-                                                style="background-color:blue;color:white">Back</button></a> *@
+                                        <a asp-action="Edit"><button class="btn btn-success">Save</button></a>
                                     </div>
                                 </form>
 
                                 </tbody>
-
-
-
-                                @* <div class="clearfix">
-                                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries
-                                    </div>
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                                        <li class="page-item active"><a href="#" class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </div> *@
                     </div>
                 </div>
             </body>
             <!-- Footer -->
 
-            <footer class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div
-                                class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
-                                <ul class="footer_nav">
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">FAQs</a></li>
-                                    <li><a asp-controller="Home" asp-action="Index">Contact us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div
-                                class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="footer_nav_container">
-                                <div class="cr">©2022 All Rights Reserverd. Made by Group1 SE1601 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
 
 
             </html>
