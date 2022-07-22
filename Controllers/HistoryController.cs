@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEBook.Data;
 using FEBook.DataAccess.DAO;
 using FEBook.Models;
 using Microsoft.AspNetCore.Http;
@@ -51,10 +50,6 @@ namespace FEBook.Controllers
             model.id = account.UserId;
             model.user = account.UserName;
             model.historyList = historylist.ToList();
-            foreach (ReadingHistory rh in historylist)
-            {
-                System.Console.WriteLine("{0} {1} {2}", rh.DateRead, rh.Book.BookName, account.UserName);
-            }
             return View(model);
         }
 
