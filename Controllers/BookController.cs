@@ -60,6 +60,40 @@ namespace FEBook.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Book book, IFormFile bookCover, IFormFile bookContent)
         {
+            var errors = new string[6];
+            if (book.BookName == null )
+            {
+                ViewBag.errorNull_BookName = "This input is not null!";
+            }
+
+            if (book.BookAuthors == null )
+            {
+                ViewBag.errorNull_Author = "This input is not null!";
+            }
+
+            if (book.Content == null )
+            {
+                ViewBag.errorFormat_Content = "File format incorrect";
+            }
+
+            if (book.BookCover == null )
+            {
+                ViewBag.errorFormat_Cover = "File format incorrect";
+            }
+
+            if (book.YearOfPublic < 1500 || book.YearOfPublic > DateTime.Now.Year)
+            {
+                ViewBag.errorNull__YOP = "This input should be from 1500 up to now!!!!!!! ";
+            }
+            if (book.Languages == null )
+            {
+                ViewBag.errorNull_Languages = "This input is not null!";
+            }
+
+            if (book.Summary == null )
+            {
+                ViewBag.errorNull_Summary = "This input is not null!";
+            }
             try
             {
                 if (bookCover != null)

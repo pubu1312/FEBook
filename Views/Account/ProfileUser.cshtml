@@ -127,7 +127,7 @@
 					<span class="login100-form-title">
 						Account
 					</span>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Username is not null">
 						<h5>Username</h5>
 						<input class="input100" type="text" name="username" asp-for="UserName">
 						<span class="focus-input100"></span>
@@ -135,7 +135,7 @@
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Full Name is not null">
 						<h5>Full Name</h5>
 						<input class="input100" type="text" name="fullname" asp-for="FullName">
 						<span class="focus-input100"></span>
@@ -154,7 +154,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Password is not null">
 						<h5>Passwords</h5>
 						<input class="input100" type="text" style="-webkit-text-security: circle;" name="passwords" asp-for="Passwords">
 						<span class="focus-input100"></span>
@@ -163,7 +163,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Phone number is not null">
 						<h5>Phone Number</h5>
 						<input class="input100" type="text" name="phone" asp-for="Phone">
 						<span class="focus-input100"></span>

@@ -111,7 +111,7 @@
 					<span class="login100-form-title">
 						Edit User
 					</span>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Username not null">
 						<h5>Username</h5>
 						<input asp-for="UserName" class="input100" type="text" placeholder="Username">
 						<span class="focus-input100"></span>
@@ -120,7 +120,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Password is not null">
 						<h5>Passwords</h5>
 						<input asp-for="Passwords" class="input100" type="password" placeholder="password">
 						<span class="focus-input100"></span>
@@ -138,7 +138,7 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Full Name is not null">
 						<h5>FullName</h5>
 						<input asp-for="FullName" class="input100" type="text" placeholder="FullName">
 						<span class="focus-input100"></span>
@@ -146,7 +146,7 @@
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Role must be 'Admin' or 'User'">
 						<h5>Roles</h5>
 						<input asp-for="Roles" class="input100" type="text" placeholder="Roles">
 						<span class="focus-input100"></span>
@@ -156,7 +156,7 @@
 					</div>
 
 					<div class="wrap-input100">
-						<h5>MajorID</h5>
+						<h5>Major</h5>
 						<input asp-for="MajorId" class="input100" type="text" placeholder="MajorId">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -165,7 +165,7 @@
 					</div>
 
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Phone number is not null">
 						<h5>Phone Number</h5>
 						<input input asp-for="Phone" class="input100" type="text" placeholder="Phone Number">
 						<span class="focus-input100"></span>
