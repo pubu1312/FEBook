@@ -106,13 +106,11 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>
                                         <th>Book Name</th>
                                         <th>Book Cover</th>
                                         <th>Year Of Public</th>
                                         <th>Languages</th>
                                         <th>Update Date</th>
-                                        </th>
                                         @foreach (var Book in Model.BookList){
                                         <tr>
                                             <td>@Book.BookName</td>
@@ -122,13 +120,17 @@
                                             <td>@Book.UpdateDate</td>
                                             <td>
                                                 <a class="fa fa-pencil fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Edit" asp-route-Id="@Book.BookId"></a>
-                                                <a data-confirm="Are you sure you want to delete this record?" style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Book" asp-action="DeleteOnce" asp-route-Id="@Book.BookId"></a>
+                                                <a style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Book" asp-action="DeleteOnce" asp-route-Id="@Book.BookId"></a>
                                             </td>
                                         </tr>
                                         }
                                     </tbody>
                             </table>
-                            <div class="clearfix">
+                        </div>
+
+                        <div class="container">
+                            <div class="table-wrapper">
+                                <div class="clearfix">
                                 <div class="hint-text" hidden>Showing <b>5</b> out of <b>25</b> entries</div>
                             </div>
                             <div class="table-title">
@@ -141,13 +143,12 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>
                                         <th>Book Name</th>
                                         <th>Book Cover</th>
                                         <th>Year Of Public</th>
                                         <th>Languages</th>
                                         <th>Update Date</th>
-                                        </th>
+
                                         @foreach (var Book in Model.BookDeletedList){
                                         <tr>
                                             <td>@Book.BookName</td>
@@ -157,13 +158,13 @@
                                             <td>@Book.UpdateDate</td>
                                             <td>
                                                 <a class="fa fa-undo fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Restore" asp-route-Id="@Book.BookId"></a>
-                                                <a data-confirm="Are you sure you want to delete this record?" class="modal" style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Delete" asp-route-Id="@Book.BookId"></a>
+                                                <a style="padding-left:15px" class="fa fa-trash fa-2x" aria-hidden="true" asp-controller="Book" asp-action="Delete" asp-route-Id="@Book.BookId"></a>
                                             </td>
                                         </tr>
                                         }
                                     </tbody>
                             </table>
-
+                            </div>
                         </div>
                     </div>
                 </body>
@@ -175,7 +176,5 @@
 </html>
 <!-- partial -->
 <script src="~/js/script.js"></script>
-
-
 
 </html>

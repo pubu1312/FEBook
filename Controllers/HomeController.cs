@@ -57,10 +57,9 @@ namespace FEBook.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 searchBook = searchBook.Where(c => c.BookName!.ToLower().Contains(searchString.ToLower()));
-                model.searchrs = String.Format("There are {0} result(s) of keyword {1}", searchBook.Count(), searchString);
-
+                model.searchrs = String.Format("There are {0} result(s) of keyword \"{1}\"", searchBook.Count(), searchString);
             }
-            else
+            else 
             {
                 model.searchrs = "There are no result of search book ";
             }
